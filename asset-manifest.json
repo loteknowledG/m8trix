@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/m8trix/static/css/main.eda3c920.chunk.css",
+    "main.js": "/m8trix/static/js/main.91c69bad.chunk.js",
+    "main.js.map": "/m8trix/static/js/main.91c69bad.chunk.js.map",
+    "runtime-main.js": "/m8trix/static/js/runtime-main.c89f7ae4.js",
+    "runtime-main.js.map": "/m8trix/static/js/runtime-main.c89f7ae4.js.map",
+    "static/css/2.189ab08d.chunk.css": "/m8trix/static/css/2.189ab08d.chunk.css",
+    "static/js/2.0c51299b.chunk.js": "/m8trix/static/js/2.0c51299b.chunk.js",
+    "static/js/2.0c51299b.chunk.js.map": "/m8trix/static/js/2.0c51299b.chunk.js.map",
+    "static/js/3.a93652b3.chunk.js": "/m8trix/static/js/3.a93652b3.chunk.js",
+    "static/js/3.a93652b3.chunk.js.map": "/m8trix/static/js/3.a93652b3.chunk.js.map",
+    "index.html": "/m8trix/index.html",
+    "static/css/2.189ab08d.chunk.css.map": "/m8trix/static/css/2.189ab08d.chunk.css.map",
+    "static/css/main.eda3c920.chunk.css.map": "/m8trix/static/css/main.eda3c920.chunk.css.map",
+    "static/js/2.0c51299b.chunk.js.LICENSE.txt": "/m8trix/static/js/2.0c51299b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c89f7ae4.js",
+    "static/css/2.189ab08d.chunk.css",
+    "static/js/2.0c51299b.chunk.js",
+    "static/css/main.eda3c920.chunk.css",
+    "static/js/main.91c69bad.chunk.js"
+  ]
+}
