@@ -1,0 +1,21 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  --height: 240; /* Minimal row height */
+  --ratio: 1; /* Default aspect ratio for photos that are not loaded yet */
+}
+
+.item {
+  flex: calc(var(--height) / var(--ratio));
+  min-width: calc(var(--height) / var(--ratio) * 1px);
+  margin: 2px;
+  font-size: 0;
+}
+
+.item img {
+  width: 100%;
+}
+
+.placeholder {
+  flex-grow: 99999;
+}

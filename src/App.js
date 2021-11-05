@@ -1,42 +1,46 @@
 
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import './App.css';
-import TopAppBar from './components/topAppBar'
-import BottomAppBar from './components/bottomAppBar'
-import Headroom from 'react-headroom'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import Dashboard from './views/Dashboard'
-import {
-  BrowserRouter as Router,
-  Route,
-} from "react-router-dom";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil';
+import Play from './views/Play'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { RecoilRoot } from 'recoil';
 
-const theme = createTheme({
+
+const themeDark = createTheme({
+  typography: {
+    fontFamily: '"Hack"',
+  },
+  
   palette: {
-    type: 'dark',
+    mode: 'dark',
+    background: {
+      default: '#261D45'
+    },
     primary: {
-      main: '#3f51b5',
+      main: '#E26DFF',
+      fontFace: 'Hack'
     },
     secondary: {
-      main: '#f50057',
-    },
+      main: '#CA7BFF'
+    }
   },
-});
+})
 
 function App() {
   return (
     <RecoilRoot>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={themeDark}>
+        <CssBaseline />
         <Router>
-          <Route path="/">
-            <Dashboard />
-          </Route>
+          <Switch>
+            <Route path="/play">
+              <Play />
+            </Route>
+            <Route path="/">
+              <Dashboard />
+            </Route>
+          </Switch>
         </Router>
       </ThemeProvider>
     </RecoilRoot>

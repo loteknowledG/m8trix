@@ -1,14 +1,8 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import Dialog from '@mui/material/Dialog';
 import color from "color";
 
-const GlassAppBar = styled(AppBar)(({c = '#ffffff', blur = 3, theme }) => ({
+const GlassDialog = styled(Dialog)(({c = '#E7D4F2', blur = 3, theme }) => ({
   backgroundColor: color(c).alpha(0.4).toString(),
   backgroundImage: `linear-gradient(to bottom right, ${color(c)
     .alpha(0.2)
@@ -17,6 +11,5 @@ const GlassAppBar = styled(AppBar)(({c = '#ffffff', blur = 3, theme }) => ({
   boxShadow: "10px 10px 10px rgba(30, 30, 30, 0.1)",
   borderLeft: `solid 1px ${color(c).alpha(0.3).toString()}`,
   borderTop: `solid 1px ${color(c).alpha(0.8).toString()}`,
-  borderRadius: theme.spacing(2),
 }));
-export default GlassAppBar
+export default GlassDialog

@@ -1,32 +1,22 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import React from 'react';
+import { useRecoilState } from 'recoil';
+import { Box, Divider, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import GlassDrawer from '../../../../components/GlassDrawer'
+import drawerOpenState from '../../../../atoms/drawerOpenState' 
 
-export default function GlassDrawer(props) {
-  const [state, setState] = useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
-  const { menuButton } = props;
+export default function Navigator() {
+  const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState)
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
-    setState({ ...state, [anchor]: open });
+    setDrawerOpen(drawerOpen === 'left' ? false : 'left');
   };
 
-  
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -56,15 +46,17 @@ export default function GlassDrawer(props) {
         ))}
       </List>
     </Box>
-  );
+  )
 
   return (
-    <Drawer
-      anchor={anchor}
-      open={state[anchor]}
-      onClose={toggleDrawer(anchor, false)}
-    >
-      {list(anchor)}
-    </Drawer>
+    <>
+      <GlassDrawer
+        anchor={'left'}
+        open={drawerOpen === 'left' ? true : false}
+        onClose={() => setDrawerOpen(false)}
+      >
+        {list('left')}
+      </GlassDrawer>
+    </>
   );
 }
