@@ -1,8 +1,10 @@
 import { useRecoilState } from 'recoil'
 import { playsState } from '../../../atoms/playsState'
 import { Container, ImageList, ImageListItem, TextField } from '@mui/material'
+import { useHistory } from 'react-router-dom'
 
 export const MomentsGrid = () => {
+  const history = useHistory()
   const [plays, setPlays] = useRecoilState(playsState);
   const path = window.location.pathname
   const key = path.substring(path.lastIndexOf('/') + 1)
@@ -15,7 +17,7 @@ export const MomentsGrid = () => {
   if (play)
     return (<Container >
       <TextField required fullWidth defaultValue="Title" label="Required" variant="standard" />
-      <ImageList  >
+      <ImageList>
         {play[0].moments.map((moment) => (
           <ImageListItem key={moment.id}>
             <img
@@ -28,7 +30,10 @@ export const MomentsGrid = () => {
         ))}
       </ImageList>
     </Container>)
-  else 
+  else {
+    history.push('/')
     return (<></>)
+  }
+    
 }
 export default MomentsGrid

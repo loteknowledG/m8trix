@@ -5,6 +5,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import GlassDrawer from '../../../../components/GlassDrawer'
 import drawerOpenState from '../../../../atoms/drawerOpenState' 
+import Tree from './tree'
 
 export default function Navigator() {
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState)
@@ -24,7 +25,8 @@ export default function Navigator() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <Tree/>
+      {/* <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
@@ -44,7 +46,7 @@ export default function Navigator() {
             <ListItemText primary={text} />
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   )
 

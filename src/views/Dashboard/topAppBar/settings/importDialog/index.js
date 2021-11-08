@@ -5,13 +5,13 @@ import {  Button, Dialog, DialogActions, DialogContent, DialogTitle }from '@mui/
 import ImportTab from './importTab'
 import { v4 as uuidv4 } from 'uuid'
 import { playsState } from '../../../../../atoms/playsState';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
 export default function ImportDialog({ onClose, open}) {
   const [tabValue, setTabValue] = useState('URL') 
-  const [code, setCode] = useState();
-  const setPlays = useSetRecoilState(playsState);
-  const history = useHistory();
+  const [code, setCode] = useState()
+  const setPlays = useSetRecoilState(playsState)
+  const history = useHistory()
 
   const handleClose = () => {
     onClose();
