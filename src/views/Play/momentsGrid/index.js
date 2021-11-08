@@ -1,27 +1,27 @@
 import { useRecoilState } from 'recoil'
-import { pixState } from '../../../atoms/pixState'
+import { playsState } from '../../../atoms/playsState'
 import { Container, ImageList, ImageListItem, TextField } from '@mui/material'
 
 export const MomentsGrid = () => {
-
-  const [pix, setPix] = useRecoilState(pixState);
+  const [plays, setPlays] = useRecoilState(playsState);
   const path = window.location.pathname
   const key = path.substring(path.lastIndexOf('/') + 1)
-  let pics = pix.filter((pic) => {
-    if (pic.key === key)
-       return pic
+  let play = plays.filter((play) => {
+    if (play.key === key)
+      return play
+    else return null
   })
   
-  if (pics.length > 0)
+  if (play)
     return (<Container >
-      <TextField fullWidth label="Title" variant="standard" />
+      <TextField required fullWidth defaultValue="Title" label="Required" variant="standard" />
       <ImageList  >
-        {pics[0].pix.map((item) => (
-          <ImageListItem key={item.id}>
+        {play[0].moments.map((moment) => (
+          <ImageListItem key={moment.id}>
             <img
-              src={`${item.src}`}
-              srcSet={`${item.src}`}
-              alt={item.id}
+              src={`${moment.src}`}
+              srcSet={`${moment.src}`}
+              alt={moment.id}
               loading="lazy"
             />
           </ImageListItem>

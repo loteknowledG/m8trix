@@ -3,6 +3,7 @@ import GlassAppBar from '../../../components/GlassAppBar'
 import { useRecoilState } from 'recoil'
 import { useHistory } from "react-router-dom";
 import drawerOpenState from '../../../atoms/drawerOpenState'
+import Settings from './settings'
 
 const BackIcon = () => {
   return (
@@ -33,6 +34,7 @@ export default function TopAppBar() {
         <Button size="large" aria-label="play settings" onClick={() => { setDrawerOpen('right') }}>
           <SettingsIcon color="primary"/>
         </Button>
+        <Settings />
       </Toolbar>
     </GlassAppBar>
   </Box>)

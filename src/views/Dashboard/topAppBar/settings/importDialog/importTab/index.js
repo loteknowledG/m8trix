@@ -37,7 +37,7 @@ export default function ImportTab({ setCodeValue, setTabValue }) {
             padding={ 15 }
             style={{
               fontSize: 12,
-              backgroundColor: "#f5f5f5",
+              backgroundColor: "#261D45",
               fontFamily: 'Hack,ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}
           />
