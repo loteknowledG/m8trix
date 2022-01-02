@@ -3,18 +3,30 @@ import { useRecoilState } from 'recoil';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, SvgIcon, Typography } from '@mui/material'
 import GlassDrawer from '../../../../components/GlassDrawer'
 import drawerOpenState from '../../../../atoms/drawerOpenState'
+import { playsState } from '../../../../atoms/playsState'
+import { save } from 'save-file'
+
+
+
+async function savePlay (plays) {
+  const path = window.location.pathname
+  const key = path.substring(path.lastIndexOf('/') + 1)
+  const play = plays.find(play => play.key === key)
+  await save(JSON.stringify(play), 'example.matrix')
+}
+
 
 export default function Settings() {
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
   const [dialogOpen, setDialogOpen] = useState(false)
-
+  const [plays, setPlays] = useRecoilState(playsState)
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
     setDrawerOpen(drawerOpen === 'right' ? false : 'right');
-  };
-
+  }
+  
   const ExportIcon = (props) => {
     return (
       <SvgIcon>
@@ -33,11 +45,13 @@ export default function Settings() {
       <List>
       <Typography variant="h6" gutterBottom component="div">
         Play Settings
+        <Divider />      
       </Typography>
       </List>
-      <Divider />
       <List>
-        <ListItem button key={'export'} onClick={() => setDialogOpen(true)}>
+        <ListItem button key={'export'} onClick={() => {
+          savePlay(plays)
+        }}>
           <ListItemIcon>
             <ExportIcon />
           </ListItemIcon>

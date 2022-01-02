@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
-import { Box, Button, Tab } from '@mui/material';
+import { Box, Tab, TextField } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import CodeEditor from '@uiw/react-textarea-code-editor';
+import {useDropzone} from 'react-dropzone'
 
-export default function ImportTab({ setCodeValue, setTabValue }) {
+export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue }) {
   const [value, setValue] = useState('URL');
-  const [code, setCode] = useState();
-  
-  const handleTabChange = (event, newValue) => {
+  const [photosHTML, setPhotosHTML] = useState();
+  const [url, setUrl] = useState();
+
+  const handleTabChange = (newValue) => {
     setValue(newValue);
     setTabValue(newValue)
   }
 
-  const handleCodeChange = (newValue) => {
-    setCode(newValue)
-    setCodeValue(newValue)
+  const handlePhotosHTMLChange = (newValue) => {
+    setPhotosHTML(newValue)
+    setPhotosHTMLValue(newValue)
   }
+
+  const handleUrlChange = (newValue) => {
+    const getLastItem = newValue.substring(newValue.lastIndexOf('/') + 1)
+    setUrl(getLastItem)
+    setUrlValue(getLastItem)
+  }
+
+  /* React Dropzone */ 
+  const {getRootProps, getInputProps, open, acceptedFiles} = useDropzone({
+    // Disable click and keydown behavior
+    noClick: true,
+    noKeyboard: true
+  })
+
+  const files = acceptedFiles.map(file => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+    </li>
+  ))
 
   return (
     <Box sx={{ width: '100%', typography: 'body1' }}>
@@ -23,17 +44,26 @@ export default function ImportTab({ setCodeValue, setTabValue }) {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleTabChange} aria-label="Inload">
             <Tab label="URL" value="URL" />
-            <Tab label="Code" value="Code" />
-            <Tab label="File" value="File" />
+            <Tab label="Photos HTML" value="Photos HTML" />
+            <Tab label="Play JSON" value="Play JSON" />
           </TabList>
         </Box>
-        <TabPanel value="URL">Item One</TabPanel>
-        <TabPanel value="Code">
+        <TabPanel value="URL" >
+          <TextField 
+            // value= { url }
+            sx={{ width:'100%' }} 
+            id="standard-basic" 
+            label="google photos Link-sharing" 
+            variant="standard"
+            onChange={ (event) => handleUrlChange(event.target.value) } 
+          />
+        </TabPanel>
+        <TabPanel value="Photos HTML">
           <CodeEditor
-            value={ code }
+            value={ photosHTML }
             language="html"
-            placeholder="Paste Code."
-            onChange={ (event) => handleCodeChange(event.target.value) }
+            placeholder="Paste Photos HTML."
+            onChange={ (event) => handlePhotosHTMLChange(event.target.value) }
             padding={ 15 }
             style={{
               fontSize: 12,
@@ -42,7 +72,21 @@ export default function ImportTab({ setCodeValue, setTabValue }) {
             }}
           />
         </TabPanel>
-        <TabPanel value="File">Item Three</TabPanel>
+        <TabPanel value="Play JSON">
+          <div className="container">
+            <div {...getRootProps({className: 'dropzone'})}>
+              <input {...getInputProps()} />
+              <p>Drag 'n' drop play JSON file here</p>
+              <button type="button" onClick={open}>
+                Open File Dialog
+              </button>
+            </div>
+            <aside>
+              <h4>Files</h4>
+              <ul>{files}</ul>
+            </aside>
+          </div>
+        </TabPanel>
       </TabContext>
     </Box>
   );

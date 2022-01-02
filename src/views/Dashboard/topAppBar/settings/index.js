@@ -62,5 +62,5 @@ export default function Settings() {
         onClose={() => setDialogOpen(false)}
       />
     </>
-  );
+  )
 }

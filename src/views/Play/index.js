@@ -9,7 +9,6 @@ export default function Play () {
         <TopAppBar /> 
       </Headroom>
       <MomentsGrid />
-      in play
     </div>
   )
 }

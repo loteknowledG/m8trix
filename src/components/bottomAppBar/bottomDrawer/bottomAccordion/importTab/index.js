@@ -20,7 +20,6 @@ export default function ImportTab() {
       const gifs = code.split(',')
         .filter(gif => gif.includes('https://lh3'))
         .map(gif => '"' + gif.replace(/(\["|")/g, '').replace(/(\r\n\t|\n|\r\t)/gm, "") + '"')
-      
       if (gifs.length) {
         const play = {}
         play.key = uuidv4()

@@ -1,39 +1,37 @@
 import { useRecoilState } from 'recoil'
 import { playsState } from '../../../atoms/playsState'
 import { Container, ImageList, ImageListItem, TextField } from '@mui/material'
-import { useHistory } from 'react-router-dom'
 
 export const MomentsGrid = () => {
-  const history = useHistory()
-  const [plays, setPlays] = useRecoilState(playsState);
+  const [plays, setPlays] = useRecoilState(playsState)
   const path = window.location.pathname
   const key = path.substring(path.lastIndexOf('/') + 1)
-  let play = plays.filter((play) => {
-    if (play.key === key)
-      return play
-    else return null
-  })
-  
+  const play = plays.find(play => play.key === key)
+ 
   if (play)
-    return (<Container >
+    return (<Container
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
       <TextField required fullWidth defaultValue="Title" label="Required" variant="standard" />
-      <ImageList>
-        {play[0].moments.map((moment) => (
-          <ImageListItem key={moment.id}>
+      <ImageList variant="woven" cols={2} gap={1}>
+      
+      {play.moments.slice(0, 10).map((moment, idx) => (
+        <ImageListItem  key={moment.id}>
             <img
-              src={`${moment.src}`}
-              srcSet={`${moment.src}`}
+              src={`${moment.img}?w=164&h=164&fit=crop&auto=format`}
               alt={moment.id}
-              loading="lazy"
+              loading="lazy" 
             />
-          </ImageListItem>
-        ))}
+        </ImageListItem>
+      ))}
       </ImageList>
     </Container>)
-  else {
-    history.push('/')
+  else 
     return (<></>)
-  }
-    
 }
 export default MomentsGrid

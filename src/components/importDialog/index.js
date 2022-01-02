@@ -22,7 +22,6 @@ export default function ImportDialog({ onClose, open}) {
       const gifs = code.split(',')
         .filter(gif => gif.includes('https://lh3'))
         .map(gif => '"' + gif.replace(/(\["|")/g, '').replace(/(\r\n\t|\n|\r\t)/gm, "") + '"')
-      
       if (gifs.length) {
         const play = {}
         play.key = uuidv4()
@@ -44,7 +43,7 @@ export default function ImportDialog({ onClose, open}) {
     if (tabValue === 'URL') {
       return <></>
     } else if (tabValue === 'Code') {
-      return <Button onClick={ parseCode } >Parse Code</Button>
+      return <Button onClick={ parseCode }>Parse Code</Button>
     } else if (tabValue === 'File') {
       return <></>
     } else {

@@ -1,5 +1,8 @@
+import BottomAppBar from '../../components/bottomAppBar'
 import TopAppBar from './topAppBar'
 import Headroom from 'react-headroom'
+// import Backstory from '../../components/backStory'
+
 
 export default function Dashboard () {
   return (
@@ -7,6 +10,7 @@ export default function Dashboard () {
       <Headroom>
         <TopAppBar /> 
       </Headroom>
+      {/* <Backstory/> */}
     </div>
   )
 }

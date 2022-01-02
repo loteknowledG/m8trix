@@ -19,14 +19,12 @@ export default function BottomAppBar() {
   return (
     <>
       <CssBaseline />
-      
       <GlassAppBar position="fixed" sx={{ top: 'auto', bottom: 0 }}>
         <Toolbar>
           <IconButton 
             size="large"
             aria-label="menu"
-            onClick={() => setDrawerOpen('bottom')}
-          >
+            onClick={() => setDrawerOpen('bottom')}>
             <ChevronUpIcon color="primary"/>
           </IconButton>
         </Toolbar>
