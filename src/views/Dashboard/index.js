@@ -1,5 +1,5 @@
 import BottomAppBar from '../../components/bottomAppBar'
-import TopAppBar from './topAppBar'
+import TopAppBar from '../../components/TopAppBar'
 import Headroom from 'react-headroom'
 // import Backstory from '../../components/backStory'
 

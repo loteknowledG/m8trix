@@ -1,10 +1,10 @@
 import { useRecoilState } from 'recoil'
 import { Box, Button, SvgIcon, Toolbar  } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import GlassAppBar from '../../../components/GlassAppBar'
+import GlassAppBar from '../../components/GlassAppBar'
 import Navigator from './navigator'
 import Settings from './settings'
-import drawerOpenState from '../../../atoms/drawerOpenState'
+import drawerOpenState from '../../atoms/drawerOpenState'
 
 const SettingsIcon = () => {
   return (
@@ -13,6 +13,8 @@ const SettingsIcon = () => {
     </SvgIcon>
   )
 }
+
+
 
 export default function TopAppBar() {
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
@@ -31,7 +33,7 @@ export default function TopAppBar() {
             position: 'relative',
             whiteSpace: 'pre',
             color: 'whitesmoke',
-            textAlign: 'center',
+            textAlign: 'left',
             textShadow:
               '0 0 3px #9D33FF,' +
               '0 0 5px #9D33FF,' +
@@ -39,13 +41,15 @@ export default function TopAppBar() {
               '0 0 20px #9D33FF,' +
               '0 0 40px #9D33FF,' +
               '0 0 50px #9D33FF',
-          }} ><br/>
-          @@@@@@@@@@   @@@@@@  @@@@@@@ @@@@@@@  @@@ @@@  @@@<br/>
-          @@! @@! @@! @@!  @@@   @@!   @@!  @@@ @@! @@!  !@@<br/>
-          @!! !!@ @!@  !@!@!@    @!!   @!@!!@!  !!@  !@@!@! <br/>
-          !!:     !!: !!:  !!!   !!:   !!: :!!  !!:  !: :!! <br/>
-          :       :    :.:: :     :     :   : : :   :::  :::<br/>
-          </pre>
+          }} >                                                               <br/>
+___________ooo_o_____ooo_o___________________oo______________________________<br/>
+oo_ooo___oo___oo___oo___oo___oooo_____ooooo__oo_ooo___ooooo__oo_ooo___ooooo__<br/>
+ooo___o_oo___o_oo_oo___o_oo_oo___o____o___oo_ooo___o_oo____o_ooo___o_oo____o_<br/>
+oo____o_oo__o__oo_oo__o__oo___oo_____oo___oo_oo____o_ooooooo_oo______ooooooo_<br/>
+oo____o__ooo__oo___ooo__oo__o___oo___oo___oo_oo____o_oo______oo______oo______<br/>
+oo____o___oooo______oooo_____oooo__o_ooooo___oo____o__ooooo__oo_______ooooo__<br/>
+_________o_________o_______________oooo______________________________________<br/>
+         </pre>
           <Button size="large" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
           </Button>

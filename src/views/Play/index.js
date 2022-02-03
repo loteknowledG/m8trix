@@ -1,6 +1,5 @@
-import TopAppBar from './topAppBar'
+import TopAppBar from '../../components/TopAppBar'
 import Headroom from 'react-headroom'
-import MomentsGrid from './momentsGrid'
 
 export default function Play () {
   return (
@@ -8,7 +7,6 @@ export default function Play () {
       <Headroom>
         <TopAppBar /> 
       </Headroom>
-      <MomentsGrid />
     </div>
   )
 }

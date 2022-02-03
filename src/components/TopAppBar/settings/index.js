@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { useRecoilState } from 'recoil';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, SvgIcon, Typography } from '@mui/material'
-import GlassDrawer from '../../../../components/GlassDrawer'
-import drawerOpenState from '../../../../atoms/drawerOpenState'
+import GlassDrawer from '../../../components/GlassDrawer'
+import drawerOpenState from '../../../atoms/drawerOpenState'
 import ImportDialog from './importDialog' 
 
 export default function Settings() {

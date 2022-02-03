@@ -5,9 +5,9 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 import {useDropzone} from 'react-dropzone'
 
 export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue }) {
-  const [value, setValue] = useState('URL');
+  const [value, setValue] = useState('Photos URL');
   const [photosHTML, setPhotosHTML] = useState();
-  const [url, setUrl] = useState();
+  const [photosUrl, setPhotosUrl] = useState();
 
   const handleTabChange = (newValue) => {
     setValue(newValue);
@@ -19,10 +19,16 @@ export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue
     setPhotosHTMLValue(newValue)
   }
 
-  const handleUrlChange = (newValue) => {
+  const handlePhotosUrlChange = (newValue) => {
     const getLastItem = newValue.substring(newValue.lastIndexOf('/') + 1)
-    setUrl(getLastItem)
+    setPhotosUrl(getLastItem)
     setUrlValue(getLastItem)
+    console.log('sys')
+  }
+
+  const handleSheetsUrlChange = (newValue) => {
+    const getLastItem = newValue.substring(newValue.lastIndexOf('/') + 1)
+    
   }
 
   /* React Dropzone */ 
@@ -43,23 +49,31 @@ export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue
       <TabContext value={value} >
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleTabChange} aria-label="Inload">
-            <Tab label="URL" value="URL" />
-            <Tab label="Photos HTML" value="Photos HTML" />
+            <Tab label="Photos URL" value="Photos URL" />
+            <Tab label="Sheets URL" value="Sheets URL" />
             <Tab label="Play JSON" value="Play JSON" />
           </TabList>
         </Box>
-        <TabPanel value="URL" >
+        <TabPanel value="Photos URL" >
           <TextField 
             // value= { url }
             sx={{ width:'100%' }} 
             id="standard-basic" 
             label="google photos Link-sharing" 
             variant="standard"
-            onChange={ (event) => handleUrlChange(event.target.value) } 
+            onChange={ (event) => handlePhotosUrlChange(event.target.value) } 
           />
         </TabPanel>
-        <TabPanel value="Photos HTML">
-          <CodeEditor
+        <TabPanel value="Sheets URL">
+          <TextField 
+            // value= { url }
+            sx={{ width:'100%' }} 
+            id="standard-basic" 
+            label="google sheets Link-sharing" 
+            variant="standard"
+            onChange={ (event) => handleSheetsUrlChange(event.target.value) } 
+          />
+          {/* <CodeEditor
             value={ photosHTML }
             language="html"
             placeholder="Paste Photos HTML."
@@ -70,7 +84,7 @@ export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue
               backgroundColor: "#261D45",
               fontFamily: 'Hack,ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
             }}
-          />
+          /> */}
         </TabPanel>
         <TabPanel value="Play JSON">
           <div className="container">
