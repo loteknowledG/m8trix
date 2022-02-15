@@ -1,9 +1,7 @@
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import { Box } from '@mui/material'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
-import GlassDrawer from '../../../components/GlassDrawer'
+import GlassDrawer from '../../glass/GlassDrawer'
+import GlassBox from '../../glass/GlassBox'
 import drawerOpenState from '../../../atoms/drawerOpenState' 
 import Tree from './tree'
 
@@ -19,17 +17,16 @@ export default function Navigator() {
 
 
   const list = (anchor) => (
-    <Box
+    <GlassBox
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Tree/>
-    </Box>
+    </GlassBox>
   )
 
   return (
-    <>
       <GlassDrawer
         anchor={'left'}
         open={drawerOpen === 'left' ? true : false}
@@ -37,6 +34,5 @@ export default function Navigator() {
       >
         {list('left')}
       </GlassDrawer>
-    </>
   );
 }

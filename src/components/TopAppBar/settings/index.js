@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { useRecoilState } from 'recoil';
 import { Box, Divider, List, ListItem, ListItemIcon, ListItemText, SvgIcon, Typography } from '@mui/material'
-import GlassDrawer from '../../../components/GlassDrawer'
+import GlassDrawer from '../../glass/GlassDrawer'
+import GlassBox from '../../glass/GlassBox'
 import drawerOpenState from '../../../atoms/drawerOpenState'
 import ImportDialog from './importDialog' 
 
@@ -25,7 +26,7 @@ export default function Settings() {
   }
 
   const list = (anchor) => (
-    <Box
+    <GlassBox
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -45,7 +46,7 @@ export default function Settings() {
           <ListItemText primary={'import'} />
         </ListItem>
       </List>
-    </Box>
+    </GlassBox>
   )
 
   return (
