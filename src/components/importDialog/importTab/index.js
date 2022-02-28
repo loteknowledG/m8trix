@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Tab } from '@mui/material';
+import { Box, Tab } from '@mui/material';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 

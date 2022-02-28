@@ -1,19 +1,26 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline'
 import Dashboard from './views/Dashboard'
 import Play from './views/Play'
 import Game from './views/Play/Game'
 import List from './views/Play/List'
 import Matrix from './views/Play/Matrix'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot } from 'recoil'
 
+
+// const useGlobalStyles = makeStyles({
+//   "@global": {
+//     body: {
+//       backgroundColor: "tomato"
+//     }
+//   }
+// });
 
 const themeDark = createTheme({
   typography: {
     fontFamily: '"Hack"',
   },
-  
   palette: {
     mode: 'dark',
     background: {
@@ -27,16 +34,20 @@ const themeDark = createTheme({
       main: '#CA7BFF'
     }
   },
+  body: {
+    height: '100%',
+    margin: 0
+  }
 })
 
 function App() {
   return (
     <RecoilRoot>
       <ThemeProvider theme={themeDark}>
+        {/* <GlobalStyle/> */}
         <CssBaseline />
         <Router>
           <Switch>
-            
             <Route path="/game">
               <Game />
             </Route>
@@ -46,7 +57,7 @@ function App() {
             <Route path="/playList">
               <List />
             </Route>
-            <Route path="/playMatrix">
+            <Route path="/matrix">
               <Matrix />
             </Route>
             <Route path="/">

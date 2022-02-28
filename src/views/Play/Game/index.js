@@ -1,22 +1,34 @@
 import React, { useEffect, useState } from "react"
-import gifFrames from "gif-frames"
-
+import axios from 'axios'
+import Moment from '../../../components/Moment'
+import FluidSimulation from '../../../components/FluidSimulation'
 
 export const Game = () => {
-  const [images, setImages] = useState(null);
+  const [images, setImages] = useState([]);
   useEffect(() => {
-    gifFrames({ url: 'https://lh3.googleusercontent.com/pw/AM-JKLWvES54TrtHLdZcWqFQU6kI7VeeOE8EMyzegXw1TtpJZdNpib3FJLzkdx4b1fu38kw7URSMPYCQYSEx1CZJ7cXI0tTjgAw5cZPxSEb9i8AHQfWiomYKLtB2ErpsuG_O0b_61CBALp8iu3cXYPQOhv5KaA=s246-no?authuser=6', frames: 0 }).then(function (frameData) {
-      setImages(frameData[0].getImage())
-      console.log(images)
-      // console.log(frameData[0].getImage());
-    });
-      // .then(data => console.log(data));
+    const path = window.location.pathname
+    const key = path.substring(path.lastIndexOf('/') + 1)
+    let shouldCancel = false
+    const call = async () => {
+      const response = await axios.get("https://translucent-ivy-elf.glitch.me/" + key)
+      if (!shouldCancel && response.data && response.data.length > 0) {
+        setImages(
+          response.data.map(url => ({
+            original: `${url}=w1024`,
+            thumbnail: `${url}=w100`
+          }))
+        )
+        
+      }
+    }
+    call()
+    return () => (shouldCancel = true)
   }, [])
-  console.log('weapon')
-  // gifFrames({ url: 'https://lh3.googleusercontent.com/pw/AM-JKLWvES54TrtHLdZcWqFQU6kI7VeeOE8EMyzegXw1TtpJZdNpib3FJLzkdx4b1fu38kw7URSMPYCQYSEx1CZJ7cXI0tTjgAw5cZPxSEb9i8AHQfWiomYKLtB2ErpsuG_O0b_61CBALp8iu3cXYPQOhv5KaA=s246-no?authuser=6', frames: 0 }).then(function (frameData) {
-  //   console.log(frameData[0].getImage());
-  // });
-  return (<></>)
+  return images.length > 0 ? 
+    <FluidSimulation>
+    <Moment images={images} />
+    </FluidSimulation> :
+  <></>
 }
 
 export default Game

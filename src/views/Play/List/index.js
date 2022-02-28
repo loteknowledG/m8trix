@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import TopAppBar from '../../../components/TopAppBar'
 import axios from 'axios'
 import { Box, CardActions, CardActionArea, CardContent, CardMedia,
-        Grid, IconButton, SvgIcon, Typography } from '@mui/material'
+        Grid, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../../components/glass/GlassCard'
 import { useHistory } from 'react-router-dom'
-
+import { styled } from '@mui/material/styles'
+import GlassButton from '../../../components/glass/GlassButton'
 
 const MatrixIcon = () => {
   return (
@@ -27,73 +28,74 @@ export const List = () => {
   const path = window.location.pathname
   const [plays, setPlays] = useState([]);
   const history = useHistory()
-
-
+  
   useEffect(() => {
     const key = path.substring(path.lastIndexOf('/') + 1) 
-      let shouldCancel = false
-      const call = async () => {
-        const response = await axios.get('https://opensheet.elk.sh/' + key + '/Playlist')
-        if (!shouldCancel && response.data && response.data.length > 0) {
-          setPlays(
-            response.data.map(row => ({
-              coverArtUri: row['COVER-ART-URI'],
-              playUri: row['PLAY-URI'],
-              title: row['TITLE']
-            })
-          ))
-        }
+    let shouldCancel = false
+    const call = async () => {
+      const response = await axios.get('https://opensheet.elk.sh/' + key + '/Playlist')
+      if (!shouldCancel && response.data && response.data.length > 0) {
+        setPlays(
+          response.data.map(row => ({
+            coverArtUri: row['COVER-ART-URI'],
+            playUri: row['PLAY-URI'],
+            title: row['TITLE'],
+            _id: row['_ID']
+          })
+        ))
       }
-      call()
-      return () => (shouldCancel = true)
+    }
+    call()
+    return () => (shouldCancel = true)
   }, [])
 
   const matrixClick = (playUri) => {
-    history.push('/playMatrix/' + playUri.substring(path.lastIndexOf('/') + 1))
+    history.push('/matrix/' + playUri.substring(path.lastIndexOf('/') + 1))
   } 
 
-  return (
-    <>
-      <TopAppBar />
-      <Box sx={{ mt:'17%', flexGrow: 1 }}>
-        <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          { plays.map((play, index) => (
-            <Grid item xs={3} md={4} key={index}>
-              <GlassCard>
-                <CardActionArea>
-                  <CardMedia
-                    component='img'
-                    image={play.coverArtUri}
-                    alt={play.title}
-                  />
-                  <CardContent>
-                    <Typography 
-                      className="font-effect-neon"
-                      gutterBottom 
-                      variant='h5' 
-                      component='div'>
-                      {play.title}
-                    </Typography>
-                  </CardContent>
-                  </CardActionArea>
-                <CardActions>
-                  <Box sx={{ flexGrow: 1, ml: 1}} onClick={()=>matrixClick(play.playUri)}>
-                    <IconButton size="large" edge="start" >
-                      <MatrixIcon />
-                    </IconButton>
-                    </Box>
-                    <Box sx={{ mr: 1 }}>
-                    <IconButton size="large">
-                      <PlayIcon />
-                    </IconButton>
-                  </Box>
-                </CardActions>
-              </GlassCard>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </>
-  )
+  const gameClick = (playUri) => {
+    history.push('/game/' + playUri.substring(path.lastIndexOf('/') + 1))
+  }
+
+  return (<>
+    <TopAppBar />
+    <Box sx={{ mt:'22%', flexGrow: 1 }}>
+      <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+        { plays.map((play, index) => (
+          <Grid item xs={3} md={4} key={index}>
+            <GlassCard>
+              <CardActionArea>
+                <CardMedia
+                  component='img'
+                  image={play.coverArtUri}
+                  alt={play.title} />
+                <CardContent>
+                  <Typography 
+                    className="font-effect-neon"
+                    gutterBottom 
+                    variant='h5' 
+                    component='div'>
+                    {play.title}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Box sx={{ flexGrow: 1, ml: 1}}>
+                  <GlassButton color="primary" variant="outlined" onClick={()=>matrixClick(play.playUri)}  edge="start" >
+                    <MatrixIcon />
+                  </GlassButton>
+                </Box>
+                <Box sx={{ mr: 1 }} >
+                  <GlassButton color="primary" variant="outlined" onClick={()=>gameClick(play.playUri)}>
+                    <PlayIcon />
+                  </GlassButton>
+                </Box>
+              </CardActions>
+            </GlassCard>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  </>)
 }
 export default List

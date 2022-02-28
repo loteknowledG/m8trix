@@ -1,7 +1,8 @@
 import { useRecoilState } from 'recoil'
-import { Box, IconButton, SvgIcon, Toolbar, Typography } from '@mui/material'
+import { Box, Button, SvgIcon, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import GlassAppBar from '../glass/GlassAppBar'
+import GlassButton from '../glass/GlassButton'
 import Navigator from './navigator'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
@@ -25,11 +26,12 @@ export default function TopAppBar() {
       position: '-webkit-sticky, sticky', top: 0 }} >
       <GlassAppBar >
         <Toolbar>
-          <IconButton size="large" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
+          <GlassButton variant="outlined" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
             <MenuIcon color="primary"/>
-          </IconButton>
+          </GlassButton>
           <Navigator />
           <Typography sx={{
+            m: 2,
             fontFamily: 'Hack, monospace',
             [theme.breakpoints.down('md')]: {
               fontSize: '0.48rem',
@@ -47,9 +49,9 @@ oo____o__ooo__oo___ooo__oo__o___oo___oo___oo_oo____o_oo______oo______oo______<br
 oo____o___oooo______oooo_____oooo__o_ooooo___oo____o__ooooo__oo_______ooooo__<br/>
 _________o_________o_______________oooo______________________________________<br/>
          </Typography>
-          <IconButton size="large" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
+          <GlassButton variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
-          </IconButton>
+          </GlassButton>
           <Settings/>
         </Toolbar>
       </GlassAppBar>

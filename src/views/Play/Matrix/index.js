@@ -4,7 +4,6 @@ import 'react-image-gallery/styles/css/image-gallery.css'
 import ImageGallery from 'react-image-gallery'
 import { Box, Button, IconButton, SvgIcon, TextField } from '@mui/material';
 import { useHistory } from 'react-router-dom'
-import ProgressiveImage from "react-progressive-graceful-image";
 
 export const Matrix = () => {
   const history = useHistory()

@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import color from "color";
 
-const GlassCard = styled(Card)(({c = '#261D45', blur = 3, theme }) => ({
+export const GlassCard = styled(Card)(({c = '#261D45', blur = 3, theme }) => ({
   backgroundColor: color(c).alpha(0.4).toString(),
   backgroundImage: `linear-gradient(to bottom right, ${color(c)
     .alpha(0.2)
