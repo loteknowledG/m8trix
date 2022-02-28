@@ -25,9 +25,7 @@ export const Game = () => {
     return () => (shouldCancel = true)
   }, [])
   return images.length > 0 ? 
-    <FluidSimulation>
-    <Moment images={images} />
-    </FluidSimulation> :
+    <Moment images={images} /> :
   <></>
 }
 

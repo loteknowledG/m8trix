@@ -10,7 +10,6 @@ export default function Dashboard () {
       <Headroom >
         <TopAppBar  /> 
       </Headroom>
-      {/* <Backstory/> */}
     </div>
   )
 }

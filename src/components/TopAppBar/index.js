@@ -33,12 +33,7 @@ export default function TopAppBar() {
           <Typography sx={{
             m: 2,
             fontFamily: 'Hack, monospace',
-            [theme.breakpoints.down('md')]: {
-              fontSize: '0.48rem',
-            },
-            [theme.breakpoints.up('md')]: {
-              fontSize: '.88rem',
-            },
+            fontSize: '1.337vw'
           }} 
           className="font-effect-neon">                                                               <br/>
 ___________ooo_o_____ooo_o___________________oo______________________________<br/>
