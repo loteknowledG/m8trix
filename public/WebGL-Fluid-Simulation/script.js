@@ -31,7 +31,7 @@ const promoPopupClose = document.getElementsByClassName('promo-close')[0];
 
 if (isMobile()) {
     setTimeout(() => {
-        promoPopup.style.display = 'table';
+        promoPopup.style.display = 'none';
     }, 20000);
 }
 
@@ -113,7 +113,7 @@ if (!ext.supportLinearFiltering) {
     config.SUNRAYS = false;
 }
 
-startGUI();
+// startGUI();
 
 function getWebGLContext (canvas) {
     const params = { alpha: true, depth: false, stencil: false, antialias: false, preserveDrawingBuffer: false };

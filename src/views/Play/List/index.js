@@ -5,7 +5,6 @@ import { Box, CardActions, CardActionArea, CardContent, CardMedia,
         Grid, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../../components/glass/GlassCard'
 import { useHistory } from 'react-router-dom'
-import { styled } from '@mui/material/styles'
 import GlassButton from '../../../components/glass/GlassButton'
 
 const MatrixIcon = () => {
@@ -63,7 +62,7 @@ export const List = () => {
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
           <Grid item xs={3} md={4} key={index}>
-            <GlassCard>
+            <GlassCard sx={{pointerEvents: 'auto' }}>
               <CardActionArea>
                 <CardMedia
                   component='img'

@@ -7,7 +7,7 @@ import List from './views/Play/List'
 import Matrix from './views/Play/Matrix'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from 'recoil'
-
+import Fluid from './components/Fluid'
 
 // const useGlobalStyles = makeStyles({
 //   "@global": {
@@ -50,18 +50,23 @@ function App() {
           <Switch>
             <Route path="/game">
               <Game />
+              <Fluid />
             </Route>
             <Route path="/play">
               <Play />
+              <Fluid />
             </Route>
             <Route path="/playList">
               <List />
+              <Fluid />
             </Route>
             <Route path="/matrix">
               <Matrix />
+              <Fluid />
             </Route>
             <Route path="/">
               <Dashboard />
+              <Fluid />
             </Route>
           </Switch>
         </Router>

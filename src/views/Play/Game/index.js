@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import Moment from '../../../components/Moment'
-import FluidSimulation from '../../../components/FluidSimulation'
 
 export const Game = () => {
   const [images, setImages] = useState([]);
@@ -25,7 +24,7 @@ export const Game = () => {
     return () => (shouldCancel = true)
   }, [])
   return images.length > 0 ? 
-    <Moment images={images} /> :
+    <Moment sx={{pointerEvents: 'auto' }} images={images} /> :
   <></>
 }
 
