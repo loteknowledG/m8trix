@@ -1,0 +1,8 @@
+
+
+.image-gallery-thumbnails .image-gallery-thumbnails-container {
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: auto;
+}

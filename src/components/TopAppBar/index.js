@@ -3,7 +3,7 @@ import { Box, Button, SvgIcon, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import GlassAppBar from '../glass/GlassAppBar'
 import GlassButton from '../glass/GlassButton'
-import Navigator from './navigator'
+import Navigator from './Navigator'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
 import { createTheme } from '@mui/material/styles';
@@ -26,7 +26,7 @@ export default function TopAppBar() {
       position: '-webkit-sticky, sticky', top: 0 }} >
       <GlassAppBar >
         <Toolbar>
-          <GlassButton variant="outlined" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
+          <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
             <MenuIcon color="primary"/>
           </GlassButton>
           <Navigator />
@@ -44,7 +44,7 @@ oo____o__ooo__oo___ooo__oo__o___oo___oo___oo_oo____o_oo______oo______oo______<br
 oo____o___oooo______oooo_____oooo__o_ooooo___oo____o__ooooo__oo_______ooooo__<br/>
 _________o_________o_______________oooo______________________________________<br/>
          </Typography>
-          <GlassButton variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
+          <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
           </GlassButton>
           <Settings/>

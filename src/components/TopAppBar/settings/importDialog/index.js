@@ -27,7 +27,7 @@ export default function ImportDialog({ onClose, open}) {
   }
 
   const ActionButton = () => {
-    return <Button onClick={ inloadAlbum }>Inload</Button>
+    return <Button  sx={{pointerEvents: 'auto'}} onClick={ inloadAlbum }>Inload</Button>
   }
 
   const handleUrlChange = (newValue) => {
@@ -45,10 +45,12 @@ export default function ImportDialog({ onClose, open}) {
       <DialogTitle>Import a Play</DialogTitle>
       <DialogContent>
         <TextField 
-          sx={{ width:'100%' }} 
-          id="standard-basic" 
-          label="google Link-sharing" 
-          variant="standard"
+          sx={{ 
+            pointerEvents: 'auto',
+            width:'100%' }} 
+          id='standard-basic' 
+          label='google Link-sharing' 
+          variant='standard'
           onChange={ (event) => handleUrlChange(event.target.value) } 
         />
       </DialogContent>
