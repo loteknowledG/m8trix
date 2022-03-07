@@ -18,7 +18,8 @@ export const Moment = ({images}) => {
         userSelect: 'none',
         '-moz-user-select': 'none',
         '-webkit-user-select': 'none',
-        '-ms-user-select': 'none'
+        '-ms-user-select': 'none',
+        pointerEvents: 'auto'
       }}
       whileTap={{ scale: 0.9 }}>
       <img 
