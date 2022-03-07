@@ -58,7 +58,7 @@ export default function Settings() {
       >
         {list('right')}
       </GlassDrawer>
-      <ImportDialog 
+      <ImportDialog        
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
       />

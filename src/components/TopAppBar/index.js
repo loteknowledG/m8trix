@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { Box, Button, SvgIcon, Toolbar, Typography } from '@mui/material'
+import { Box, SvgIcon, Toolbar, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import GlassAppBar from '../glass/GlassAppBar'
 import GlassButton from '../glass/GlassButton'

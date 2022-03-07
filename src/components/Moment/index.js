@@ -16,9 +16,9 @@ export const Moment = ({images}) => {
         objectFit: 'contain',
         overflow: 'hidden',
         userSelect: 'none',
-        '-moz-user-select': 'none',
-        '-webkit-user-select': 'none',
-        '-ms-user-select': 'none',
+        'MozUserSelect': 'none',
+        'WebkitUserSelect': 'none',
+        'MsUserSelect': 'none',
         pointerEvents: 'auto'
       }}
       whileTap={{ scale: 0.9 }}>
@@ -29,9 +29,9 @@ export const Moment = ({images}) => {
           objectFit: 'contain',
           overflow: 'hidden',
           userSelect: 'none',
-          '-moz-user-select': 'none',
-          '-webkit-user-select': 'none',
-          '-ms-user-select': 'none'
+          'MozUserSelect': 'none',
+          'WebkitUserSelect': 'none',
+          'MsUserSelect': 'none'
         }} 
         onClick={() => {
           setIdx(images.length > idx + 1 ? idx + 1 : 0)

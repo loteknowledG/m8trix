@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import axios from 'axios'
 import Moment from '../../../components/Moment'
 
+
 export const Game = () => {
   const [images, setImages] = useState([]);
   useEffect(() => {
@@ -24,7 +25,7 @@ export const Game = () => {
     return () => (shouldCancel = true)
   }, [])
   return images.length > 0 ? 
-    <Moment sx={{pointerEvents: 'auto' }} images={images} /> :
+    <Moment images={images} /> :
   <></>
 }
 

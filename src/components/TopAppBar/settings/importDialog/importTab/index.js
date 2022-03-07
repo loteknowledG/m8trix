@@ -73,18 +73,6 @@ export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue
             variant="standard"
             onChange={ (event) => handleSheetsUrlChange(event.target.value) } 
           />
-          {/* <CodeEditor
-            value={ photosHTML }
-            language="html"
-            placeholder="Paste Photos HTML."
-            onChange={ (event) => handlePhotosHTMLChange(event.target.value) }
-            padding={ 15 }
-            style={{
-              fontSize: 12,
-              backgroundColor: "#261D45",
-              fontFamily: 'Hack,ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
-            }}
-          /> */}
         </TabPanel>
         <TabPanel value="Play JSON">
           <div className="container">
