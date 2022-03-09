@@ -5,6 +5,7 @@ import Play from './views/Play'
 import Game from './views/Play/Game'
 import List from './views/Play/List'
 import Matrix from './views/Play/Matrix'
+import M8trix from './views/Play/M8trix'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
@@ -44,7 +45,6 @@ function App() {
   return (
     <RecoilRoot>
       <ThemeProvider theme={themeDark}>
-        {/* <GlobalStyle/> */}
         <CssBaseline />
         <Router>
           <Switch>
@@ -62,6 +62,10 @@ function App() {
             </Route>
             <Route path="/matrix">
               <Matrix />
+              <Fluid />
+            </Route>
+            <Route path="/m8trix">
+              <M8trix />
               <Fluid />
             </Route>
             <Route path="/">
