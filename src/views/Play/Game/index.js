@@ -18,7 +18,6 @@ export const Game = () => {
             thumbnail: `${url}=w100`
           }))
         )
-        
       }
     }
     call()

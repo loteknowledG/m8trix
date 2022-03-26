@@ -28,7 +28,7 @@ export default function ImportTab({ setUrlValue, setPhotosHTMLValue, setTabValue
 
   const handleSheetsUrlChange = (newValue) => {
     const getLastItem = newValue.substring(newValue.lastIndexOf('/') + 1)
-    
+    console.log('im not sure')
   }
 
   /* React Dropzone */ 

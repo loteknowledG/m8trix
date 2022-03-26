@@ -1,12 +1,14 @@
 import TopAppBar from '../../components/TopAppBar'
-import Headroom from 'react-headroom'
+import ExpandCard from '../../components/ExpandCard'
+import Teletype from '../../components/Teletype'
 
 export default function Play () {
   return (
     <div className="App">
-      <Headroom>
+      {/* <Headroom>
         <TopAppBar /> 
-      </Headroom>
+      </Headroom> */}
+      <ExpandCard />
     </div>
   )
 }

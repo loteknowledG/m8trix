@@ -1,12 +1,17 @@
 import { useRecoilState } from 'recoil'
-import { Box, SvgIcon, Toolbar, Typography } from '@mui/material'
+import { Box, SvgIcon, Toolbar } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import GlassAppBar from '../glass/GlassAppBar'
 import GlassButton from '../glass/GlassButton'
 import Navigator from './Navigator'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
-import { createTheme } from '@mui/material/styles';
+import M8trix from './AppName/M8trix'
+import N00sphere from './AppName/N00sphere'
+import Tactix from './AppName/Tactix'
+import { useLocation } from "react-router-dom";
+
+
 
 const SettingsIcon = () => {
   return (
@@ -16,34 +21,25 @@ const SettingsIcon = () => {
   )
 }
 
-
-const theme = createTheme();
-
 export default function TopAppBar() {
+  let location = useLocation()
+  
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
   return (
-    <Box sx={{ flexGrow: 1,
-      position: '-webkit-sticky, sticky', top: 0 }} >
+    <Box sx={{ flexGrow: 1 }} >
       <GlassAppBar >
         <Toolbar>
           <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
             <MenuIcon color="primary"/>
           </GlassButton>
           <Navigator />
-          <Typography sx={{
-            m: 2,
-            fontFamily: 'Hack, monospace',
-            fontSize: '1.337vw'
-          }} 
-          className="font-effect-neon">                                                               <br/>
-___________ooo_o_____ooo_o___________________oo______________________________<br/>
-oo_ooo___oo___oo___oo___oo___oooo_____ooooo__oo_ooo___ooooo__oo_ooo___ooooo__<br/>
-ooo___o_oo___o_oo_oo___o_oo_oo___o____o___oo_ooo___o_oo____o_ooo___o_oo____o_<br/>
-oo____o_oo__o__oo_oo__o__oo___oo_____oo___oo_oo____o_ooooooo_oo______ooooooo_<br/>
-oo____o__ooo__oo___ooo__oo__o___oo___oo___oo_oo____o_oo______oo______oo______<br/>
-oo____o___oooo______oooo_____oooo__o_ooooo___oo____o__ooooo__oo_______ooooo__<br/>
-_________o_________o_______________oooo______________________________________<br/>
-         </Typography>
+          {
+            location.pathname.includes('matrix') ?
+              <M8trix /> :
+            location.pathname.includes('tactics') ?
+              <Tactix /> :
+              <N00sphere />
+          }
           <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
           </GlassButton>

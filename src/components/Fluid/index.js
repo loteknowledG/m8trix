@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 export const Fluid = () => {
     const classes = useStyles();
     return (
-        <iframe title="fluid" className={classes.iframe} src="http://localhost:3000/m8trix/WebGL-Fluid-Simulation/" height="100vh"></iframe>
+        <iframe title="fluid" className={classes.iframe} src="https://loteknowledg.github.io/m8trix#/WebGL-Fluid-Simulation/" height="100vh"></iframe>
     )
 }
 export default Fluid

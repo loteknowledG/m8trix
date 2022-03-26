@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import TopAppBar from '../../../components/TopAppBar'
 import axios from 'axios'
-import { Box, CardActions, CardActionArea, CardContent, CardMedia,
-        Grid, SvgIcon, Typography } from '@mui/material'
-import GlassCard from '../../../components/glass/GlassCard'
-import { useHistory } from 'react-router-dom'
+import { Box, CardActions, CardActionArea, CardContent, 
+        CardMedia, Grid, SvgIcon, Typography } from '@mui/material'
 import GlassButton from '../../../components/glass/GlassButton'
+import GlassCard from '../../../components/glass/GlassCard'
+import { useHistory, useParams } from 'react-router-dom'
 
 const MatrixIcon = () => {
   return (
@@ -23,16 +23,15 @@ const PlayIcon = () => {
   )
 }
 
-export const List = () => {
-  const path = window.location.pathname
+export const Plays = () => {
+  const key = useParams().key
   const [plays, setPlays] = useState([]);
   const history = useHistory()
   
   useEffect(() => {
-    const key = path.substring(path.lastIndexOf('/') + 1) 
     let shouldCancel = false
     const call = async () => {
-      const response = await axios.get('https://opensheet.elk.sh/' + key + '/Playlist')
+      const response = await axios.get('https://opensheet.elk.sh/' + key + '/Plays')
       if (!shouldCancel && response.data && response.data.length > 0) {
         setPlays(
           response.data.map(row => ({
@@ -49,16 +48,16 @@ export const List = () => {
   }, [])
 
   const matrixClick = (playUri) => {
-    history.push('/matrix/' + playUri.substring(path.lastIndexOf('/') + 1))
+    history.push('/tactics/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   } 
 
   const gameClick = (playUri) => {
-    history.push('/game/' + playUri.substring(path.lastIndexOf('/') + 1))
+    history.push('/game/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   }
 
   return (<>
     <TopAppBar />
-    <Box sx={{ mt:'22%', flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
           <Grid item xs={3} md={4} key={index}>
@@ -67,7 +66,8 @@ export const List = () => {
                 <CardMedia
                   component='img'
                   image={play.coverArtUri}
-                  alt={play.title} />
+                  alt={play.title}
+                  sx={{ loading: 'lazy'}} />
                 <CardContent>
                   <Typography 
                     className="font-effect-neon"
@@ -97,4 +97,4 @@ export const List = () => {
     </Box>
   </>)
 }
-export default List
+export default Plays

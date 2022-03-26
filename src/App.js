@@ -3,20 +3,13 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Dashboard from './views/Dashboard'
 import Play from './views/Play'
 import Game from './views/Play/Game'
-import List from './views/Play/List'
+import Plays from './views/Play/Plays'
 import Matrix from './views/Play/Matrix'
-import M8trix from './views/Play/M8trix'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Tactics from './views/Play/Tactics'
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
-
-// const useGlobalStyles = makeStyles({
-//   "@global": {
-//     body: {
-//       backgroundColor: "tomato"
-//     }
-//   }
-// });
+import './css/scrollbar.css'
 
 const themeDark = createTheme({
   typography: {
@@ -46,7 +39,7 @@ function App() {
     <RecoilRoot>
       <ThemeProvider theme={themeDark}>
         <CssBaseline />
-        <Router>
+        <Router basename="/">
           <Switch>
             <Route path="/game">
               <Game />
@@ -56,16 +49,16 @@ function App() {
               <Play />
               <Fluid />
             </Route>
-            <Route path="/playList">
-              <List />
+            <Route path="/plays/:key">
+              <Plays />
               <Fluid />
             </Route>
             <Route path="/matrix">
               <Matrix />
               <Fluid />
             </Route>
-            <Route path="/m8trix">
-              <M8trix />
+            <Route path="/tactics/:id">
+              <Tactics />
               <Fluid />
             </Route>
             <Route path="/">

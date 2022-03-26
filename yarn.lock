@@ -5943,6 +5943,18 @@
   "resolved" "https://registry.npmjs.org/hey-listen/-/hey-listen-1.0.8.tgz"
   "version" "1.0.8"
 
+"hiding-header-react@^0.6.1":
+  "integrity" "sha512-t8KtoSRZOtxdxjdnZkWUDrws6m4pIl6G74vC/CyS4QHKz4L3RQiNm3lPGeRM5FoVKWgA0gXzMV0T8GcY/GV12Q=="
+  "resolved" "https://registry.npmjs.org/hiding-header-react/-/hiding-header-react-0.6.1.tgz"
+  "version" "0.6.1"
+  dependencies:
+    "hiding-header" "^0.8.0"
+
+"hiding-header@^0.8.0":
+  "integrity" "sha512-HXTXjYqLdh0tX+iXh3A+ADYFzLwAqgVwoHnMNjSzVVg/0cerpOJU47bvTVwngB45PpLtam0Uw09CU+v1SCPnGw=="
+  "resolved" "https://registry.npmjs.org/hiding-header/-/hiding-header-0.8.3.tgz"
+  "version" "0.8.3"
+
 "history@^4.9.0":
   "integrity" "sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew=="
   "resolved" "https://registry.npmjs.org/history/-/history-4.10.1.tgz"
@@ -9154,7 +9166,7 @@
   dependencies:
     "extend" "^3.0.0"
 
-"prop-types@^15.0.0", "prop-types@^15.5.8", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
+"prop-types@^15.0.0", "prop-types@^15.6.2", "prop-types@^15.7.2", "prop-types@^15.8.1":
   "integrity" "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg=="
   "resolved" "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   "version" "15.8.1"
@@ -9238,7 +9250,7 @@
   "resolved" "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   "version" "5.1.1"
 
-"raf@^3.3.0", "raf@^3.4.1":
+"raf@^3.4.1":
   "integrity" "sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA=="
   "resolved" "https://registry.npmjs.org/raf/-/raf-3.4.1.tgz"
   "version" "3.4.1"
@@ -9337,15 +9349,6 @@
   "integrity" "sha512-rtGImPZ0YyLrscKI9xTpV8psd6I8VAtjKCzQDlzyDvqJA8XOW78TXYQwNRNd8g8JZnDu8q9Fu/1v4HPAVwVdHA=="
   "resolved" "https://registry.npmjs.org/react-fast-compare/-/react-fast-compare-3.2.0.tgz"
   "version" "3.2.0"
-
-"react-headroom@^3.1.1":
-  "integrity" "sha512-8rbXBKN187DnPg8lyJa5IKZx9rA1DbkvO4X0F6A6lSGr54fr7CHphF84fxwlPbX93Uqs9daFt9q0j3fhC7RTEg=="
-  "resolved" "https://registry.npmjs.org/react-headroom/-/react-headroom-3.2.0.tgz"
-  "version" "3.2.0"
-  dependencies:
-    "prop-types" "^15.5.8"
-    "raf" "^3.3.0"
-    "shallowequal" "^1.1.0"
 
 "react-helmet-async@^1.2.3":
   "integrity" "sha512-mCk2silF53Tq/YaYdkl2sB+/tDoPnaxN7dFS/6ZLJb/rhUY2EWGI5Xj2b4jHppScMqY45MbgPSwTxDchKpZ5Kw=="
@@ -9526,7 +9529,7 @@
   dependencies:
     "debounce" "^1.2.1"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0", "react@^15.x.x || ^16.x.x || ^17.x.x", "react@^16.0.0 || ^17.0.0", "react@^16.3.0 || ^17", "react@^16.3.2", "react@^16.6.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=16.13", "react@>=16.13.1", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@>=16.9.0", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.0.0-0 || ^16.0.0-0 || ^17.0.0-0", "react@^15.x.x || ^16.x.x || ^17.x.x", "react@^16.0.0 || ^17.0.0", "react@^16.3.2", "react@^16.6.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.9.55 || ^17.0.1", "react@^17.0.2", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=16.13", "react@>=16.13.1", "react@>=16.6.0", "react@>=16.8", "react@>=16.8 || ^17.0.0", "react@>=16.8.0", "react@>=16.9.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
