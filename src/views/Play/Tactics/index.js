@@ -52,7 +52,8 @@ export const Tactics = () => {
 
   const cardActionAreaClick = (image) => {
     setMatrixImgSrc(image)
-    history.push('/matrix/')
+    // image.substring(image.lastIndexOf('/') + 1)
+    history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
 
   return images ? <>

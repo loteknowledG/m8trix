@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import { useRecoilValue } from 'recoil';
-import matrixImgSrcState from '../../../atoms/matrixImgSrcState'
+import React from 'react'
 import TopAppBar from '../../../components/TopAppBar'
-
+import { useParams } from 'react-router-dom'
 
 export function Matrix() {
-  const matrixImgSrc = useRecoilValue(matrixImgSrcState)
+  const id = useParams().id
   return (<>
     <TopAppBar />
     <img 
@@ -19,8 +17,8 @@ export function Matrix() {
         'WebkitUserSelect': 'none',
         'MsUserSelect': 'none'
       }} 
-      src={ matrixImgSrc } 
-      alt={ matrixImgSrc } 
+      src={ 'https://lh3.googleusercontent.com/' + id } 
+      alt={ 'https://lh3.googleusercontent.com/' + id } 
     />
   </>)
 }

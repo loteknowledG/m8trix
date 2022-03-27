@@ -53,7 +53,7 @@ function App() {
               <Plays />
               <Fluid />
             </Route>
-            <Route path="/matrix">
+            <Route path="/matrix/:id">
               <Matrix />
               <Fluid />
             </Route>
