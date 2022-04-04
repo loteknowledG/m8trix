@@ -1,8 +1,8 @@
 import { styled } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
+import { SpeedDialAction } from '@mui/material'
 import color from "color";
 
-export const GlassAppBar = styled(AppBar)(({c = '#261D45', blur = 3, theme }) => ({
+export const GlassSpeedDialAction = styled(SpeedDialAction)(({c = '#261D45', blur = 3, theme }) => ({
   backgroundColor: color(c).alpha(0.4).toString(),
   backgroundImage: `linear-gradient(to bottom right, ${color(c)
     .alpha(0.2)
@@ -12,4 +12,4 @@ export const GlassAppBar = styled(AppBar)(({c = '#261D45', blur = 3, theme }) =>
   borderLeft: `solid 1px ${color(c).alpha(0.3).toString()}`,
   borderTop: `solid 1px ${color(c).alpha(0.8).toString()}`,
 }));
-export default GlassAppBar
+export default GlassSpeedDialAction

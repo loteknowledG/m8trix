@@ -1,16 +1,18 @@
+import React, { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { Box, SvgIcon, Toolbar } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
 import GlassAppBar from '../glass/GlassAppBar'
-import GlassButton from '../glass/GlassButton'
-import Navigator from './Navigator'
+import GlassFab from '../glass/GlassFab'
+import Navigator from '../Navigator'
+import Navigator2 from './Navigator2'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
 import M8trix from './AppName/M8trix'
 import N00sphere from './AppName/N00sphere'
 import Tactix from './AppName/Tactix'
 import { useLocation } from "react-router-dom";
-
+import { motion } from "framer-motion"
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 
 const SettingsIcon = () => {
@@ -21,28 +23,37 @@ const SettingsIcon = () => {
   )
 }
 
+
+
 export default function TopAppBar() {
   let location = useLocation()
-  
+  const { height, width } = useWindowDimensions()
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <GlassAppBar >
+    <Box sx={{ flexGrow: 1 }}  >
+      <GlassAppBar>
         <Toolbar>
-          <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" aria-label="navigator" onClick={() => setDrawerOpen('left')} >
-            <MenuIcon color="primary"/>
-          </GlassButton>
-          <Navigator />
-          {
-            location.pathname.includes('matrix') ?
+          <motion.div 
+            drag 
+            dragConstraints={{ 
+              top: 0, 
+              left: 0, 
+              bottom: height - 188, 
+              right: width - 188
+            }} 
+            > 
+            <Navigator />     
+            {/* <Navigator2 />      */}
+          </motion.div>
+          
+          { location.pathname.includes('matrix') ?
               <M8trix /> :
             location.pathname.includes('tactics') ?
               <Tactix /> :
-              <N00sphere />
-          }
-          <GlassButton sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
+              <N00sphere /> }
+          <GlassFab sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
-          </GlassButton>
+          </GlassFab>
           <Settings/>
         </Toolbar>
       </GlassAppBar>

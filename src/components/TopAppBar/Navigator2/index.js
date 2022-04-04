@@ -15,7 +15,7 @@ const ImportIcon = (props) => {
   )
 }
 
-export default function Navigator() {
+export function Navigator2() {
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState)
   const [dialogOpen, setDialogOpen] = useState(false)
   const toggleDrawer = (anchor, open) => (event) => {
@@ -59,5 +59,7 @@ export default function Navigator() {
         onClose={() => setDialogOpen(false)}
       />
     </>
-  );
+  )
 }
+
+export default Navigator2

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react"
-import { useSetRecoilState } from 'recoil'
-import matrixImgSrcState from '../../../atoms/matrixImgSrcState'
 import axios from "axios"
 import { Box, CardActionArea, CardMedia, Grid, IconButton, SvgIcon } from '@mui/material'
 import TopAppBar from '../../../components/TopAppBar'
@@ -26,7 +24,6 @@ const CheckboxMarkedCircle = () => {
 export const Tactics = () => {
   const [images, setImages] = useState(null);
   const [selectedImages, setSelectedImages] = useState([])
-  const setMatrixImgSrc = useSetRecoilState(matrixImgSrcState)
   const history = useHistory()
   const id = useParams().id
 
@@ -51,8 +48,6 @@ export const Tactics = () => {
   }
 
   const cardActionAreaClick = (image) => {
-    setMatrixImgSrc(image)
-    // image.substring(image.lastIndexOf('/') + 1)
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
 

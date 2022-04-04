@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import color from "color";
 
-const GlassDrawer = styled(Drawer)(({c = '#261D45', blur = 3, theme }) => ({
+export const GlassDrawer = styled(Drawer)(({c = '#261D45', blur = 3, theme }) => ({
   backgroundColor: color(c).alpha(0.4).toString(),
   backgroundImage: `linear-gradient(to bottom right, ${color(c)
     .alpha(0.2)

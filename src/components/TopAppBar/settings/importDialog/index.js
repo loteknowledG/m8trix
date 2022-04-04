@@ -25,7 +25,7 @@ export default function ImportDialog({ onClose, open}) {
     if (PS === 'p')
       history.push('/playMatrix/' + urlValue)
     else if (PS === 's')
-      history.push('/playList/' + urlValue)
+      history.push('/plays/' + urlValue)
   }
 
   const ActionButton = () => {
