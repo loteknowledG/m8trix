@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 export const Moment = ({images}) => {
   const [idx, setIdx] = useState(0)
   const { width, height, ref } = useResizeDetector();
-  
+  console.log('moment')
   return <div 
     ref={ref}>
     {`${width}x${height}x${idx}`}
@@ -36,7 +36,7 @@ export const Moment = ({images}) => {
         onClick={() => {
           setIdx(images.length > idx + 1 ? idx + 1 : 0)
         }} 
-        src={ images.length > 0 ? images[idx].original : '' } 
+        src={ images.length > 0 ? images[idx] : '' } 
         alt={ idx } 
       />
     </motion.button>

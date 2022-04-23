@@ -2,10 +2,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline'
 import Dashboard from './views/Dashboard'
 import Play from './views/Play'
-import Game from './views/Play/Game'
-import Plays from './views/Play/Plays'
-import Matrix from './views/Play/Matrix'
-import Tactics from './views/Play/Tactics'
+import Game from './views/Game'
+import Plays from './views/Plays'
+import Matrix from './views/Matrix'
+import Tactics from './views/Tactics'
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
@@ -41,7 +41,7 @@ function App() {
         <CssBaseline />
         <Router basename="/">
           <Switch>
-            <Route path="/game">
+            <Route path="/game/:id">
               <Game />
               <Fluid />
             </Route>

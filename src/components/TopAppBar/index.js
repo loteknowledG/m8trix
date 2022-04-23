@@ -12,7 +12,6 @@ import N00sphere from './AppName/N00sphere'
 import Tactix from './AppName/Tactix'
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion"
-import useWindowDimensions from '../../hooks/useWindowDimensions';
 
 
 const SettingsIcon = () => {
@@ -27,24 +26,15 @@ const SettingsIcon = () => {
 
 export default function TopAppBar() {
   let location = useLocation()
-  const { height, width } = useWindowDimensions()
+  
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
   return (
     <Box sx={{ flexGrow: 1 }}  >
       <GlassAppBar>
         <Toolbar>
-          <motion.div 
-            drag 
-            dragConstraints={{ 
-              top: 0, 
-              left: 0, 
-              bottom: height - 188, 
-              right: width - 188
-            }} 
-            > 
+          
             <Navigator />     
             {/* <Navigator2 />      */}
-          </motion.div>
           
           { location.pathname.includes('matrix') ?
               <M8trix /> :

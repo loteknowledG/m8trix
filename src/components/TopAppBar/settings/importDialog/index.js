@@ -43,40 +43,41 @@ export default function ImportDialog({ onClose, open}) {
   }
 
   return (
-      <Dialog onClose={ handleClose } open={ open }>
-        <DialogTitle>Import a Play
-          <IconButton
-            aria-label="close"
-            onClick={onClose}
-            sx={{
-                position: 'absolute',
-                right: 8,
-                top: 11,
-                color: (theme) => theme.palette.grey[500],
-                pointerEvents: 'auto'
-            }}>
-              <CloseIcon />
-          </IconButton>
-        </DialogTitle>
-        <DialogContent>
-          <TextField 
-            sx={{ 
-              pointerEvents: 'auto',
-              width:'100%' }} 
-            id='standard-basic' 
-            label='google Link-sharing' 
-            variant='standard'
-            onChange={ (event) => handleUrlChange(event.target.value) } 
-          />
-        </DialogContent>
-        <DialogActions>
-          <ActionButton />
-        </DialogActions>
-      </Dialog>
+    <Dialog onClose={ handleClose } open={ open }>
+      <DialogTitle>Import a Play
+        <IconButton
+          aria-label="close"
+          onClick={onClose}
+          sx={{
+              position: 'absolute',
+              right: 8,
+              top: 11,
+              color: (theme) => theme.palette.grey[500],
+              pointerEvents: 'auto'
+          }}>
+          <CloseIcon />
+        </IconButton>
+      </DialogTitle>
+      <DialogContent>
+        <TextField 
+          sx={{ 
+            pointerEvents: 'auto',
+            width:'100%' 
+          }} 
+          id='standard-basic' 
+          label='google Link-sharing' 
+          variant='standard'
+          onChange={(event) => handleUrlChange(event.target.value)} 
+        />
+      </DialogContent>
+      <DialogActions>
+        <ActionButton />
+      </DialogActions>
+    </Dialog>
   )
 }
 
 ImportDialog.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-};
+}

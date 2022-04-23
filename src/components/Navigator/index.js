@@ -32,6 +32,7 @@ const actions = [
   { icon: <BackIcon />, name: 'back' },
   { icon: <ForwardIcon />, name: 'forward' },
 ];
+
 export const Navigator = () => {
   let history = useHistory();
   const { height, width } = useWindowDimensions()

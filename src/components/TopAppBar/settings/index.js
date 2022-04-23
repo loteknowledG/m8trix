@@ -15,7 +15,7 @@ export default function Settings() {
       return;
     }
     setDrawerOpen(drawerOpen === 'right' ? false : 'right');
-  };
+  }
 
   const ImportIcon = (props) => {
     return (
@@ -54,8 +54,7 @@ export default function Settings() {
       <GlassDrawer
         anchor={'right'}
         open={drawerOpen === 'right' ? true : false}
-        onClose={() => setDrawerOpen(false)}
-      >
+        onClose={() => setDrawerOpen(false)} >
         {list('right')}
       </GlassDrawer>
       <ImportDialog        

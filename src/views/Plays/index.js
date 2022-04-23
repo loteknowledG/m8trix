@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import TopAppBar from '../../../components/TopAppBar'
+import TopAppBar from '../../components/TopAppBar'
 import axios from 'axios'
 import { Box, CardActions, CardActionArea, CardContent, 
         CardMedia, Grid, SvgIcon, Typography } from '@mui/material'
-import GlassButton from '../../../components/glass/GlassButton'
-import GlassCard from '../../../components/glass/GlassCard'
+import GlassButton from '../../components/glass/GlassButton'
+import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
+import './pokemon.css';
 
 const MatrixIcon = () => {
   return (
@@ -48,6 +49,7 @@ export const Plays = () => {
   }, [])
 
   const matrixClick = (playUri) => {
+    console.log(playUri)
     history.push('/tactics/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   } 
 
@@ -57,11 +59,13 @@ export const Plays = () => {
 
   return (<>
     <TopAppBar />
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, mt:37 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
-          <Grid item xs={3} md={4} key={index}>
-            <GlassCard sx={{pointerEvents: 'auto' }}>
+          <Grid item xs={2} md={3} key={index}>
+            <GlassCard 
+              className={['card', 'charizard'].join(' ')}  
+              >
               <CardActionArea>
                 <CardMedia
                   component='img'
@@ -79,12 +83,17 @@ export const Plays = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Box sx={{ flexGrow: 1, ml: 1}}>
+                <Box sx={{ 
+                  flexGrow: 1, ml: 1,
+                  pointerEvents: 'auto'
+                }}>
                   <GlassButton color="primary" variant="outlined" onClick={()=>matrixClick(play.playUri)}  edge="start" >
                     <MatrixIcon />
                   </GlassButton>
                 </Box>
-                <Box sx={{ mr: 1 }} >
+                <Box sx={{ 
+                  mr: 1,
+                  pointerEvents: 'auto'}} >
                   <GlassButton color="primary" variant="outlined" onClick={()=>gameClick(play.playUri)}>
                     <PlayIcon />
                   </GlassButton>

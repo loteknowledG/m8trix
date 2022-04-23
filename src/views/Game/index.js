@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
-import axios from "axios"
+import axios from 'axios'
+import Moment from '../../components/Moment'
 import { Box, CardActionArea, CardMedia, Grid, IconButton, SvgIcon } from '@mui/material'
-import TopAppBar from '../../../components/TopAppBar'
-import GlassCard from '../../../components/glass/GlassCard'
+import TopAppBar from '../../components/TopAppBar'
+import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
+
 
 const CheckboxBlankCircleOutlineIcon = () => {
   return (
@@ -21,7 +23,8 @@ const CheckboxMarkedCircle = () => {
   )
 }
 
-export const Tactics = () => {
+export const Game = () => {
+  console.log('Game')
   const [images, setImages] = useState(null);
   const [selectedImages, setSelectedImages] = useState([])
   const history = useHistory()
@@ -51,35 +54,9 @@ export const Tactics = () => {
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
 
-  return images ? <>
-    <TopAppBar />
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        { images.map((image) => (
-          <Grid item xs={3} md={4} key={image}>
-            <GlassCard sx={{pointerEvents: 'auto' }}>
-              <CardActionArea  sx={{ position: 'relative' }} onClick={() => cardActionAreaClick(image)}>
-                <CardMedia
-                  component='img'
-                  image={image}
-                  alt={image} >
-                </CardMedia>
-              </CardActionArea>
-              {selectedImages.includes(image) ? (
-                <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
-                  <CheckboxMarkedCircle />
-                </IconButton>
-              ) : (
-                <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
-                  <CheckboxBlankCircleOutlineIcon />
-                </IconButton>
-              )}
-            </GlassCard>
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
-  </> : 
+  return images ? 
+    <Moment images={images} /> :
   <></>
 }
-export default Tactics
+
+export default Game
