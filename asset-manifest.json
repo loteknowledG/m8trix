@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/m8trix/static/css/main.bd884609.css",
-    "main.js": "/m8trix/static/js/main.cfcc9c69.js",
+    "main.js": "/m8trix/static/js/main.c63690ee.js",
     "static/js/787.ffdcd814.chunk.js": "/m8trix/static/js/787.ffdcd814.chunk.js",
     "index.html": "/m8trix/index.html",
     "main.bd884609.css.map": "/m8trix/static/css/main.bd884609.css.map",
-    "main.cfcc9c69.js.map": "/m8trix/static/js/main.cfcc9c69.js.map",
+    "main.c63690ee.js.map": "/m8trix/static/js/main.c63690ee.js.map",
     "787.ffdcd814.chunk.js.map": "/m8trix/static/js/787.ffdcd814.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd884609.css",
-    "static/js/main.cfcc9c69.js"
+    "static/js/main.c63690ee.js"
   ]
 }
