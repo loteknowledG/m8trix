@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRecoilState } from 'recoil'
 import { Box, SvgIcon, Toolbar } from '@mui/material'
 import GlassAppBar from '../glass/GlassAppBar'
 import GlassFab from '../glass/GlassFab'
-import Navigator from '../Navigator'
-import Navigator2 from './Navigator2'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
-import M8trix from './AppName/M8trix'
 import N00sphere from './AppName/N00sphere'
-import Tactix from './AppName/Tactix'
 import { useLocation } from "react-router-dom";
-import { motion } from "framer-motion"
 
 
 const SettingsIcon = () => {
@@ -25,22 +20,13 @@ const SettingsIcon = () => {
 
 
 export default function TopAppBar() {
-  let location = useLocation()
   
   const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
   return (
     <Box sx={{ flexGrow: 1 }}  >
       <GlassAppBar>
         <Toolbar>
-          
-            <Navigator />     
-            {/* <Navigator2 />      */}
-          
-          { location.pathname.includes('matrix') ?
-              <M8trix /> :
-            location.pathname.includes('tactics') ?
-              <Tactix /> :
-              <N00sphere /> }
+          <N00sphere /> 
           <GlassFab sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
             <SettingsIcon />
           </GlassFab>

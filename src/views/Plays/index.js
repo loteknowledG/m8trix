@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import TopAppBar from '../../components/TopAppBar'
 import axios from 'axios'
-import { Box, CardActions, CardActionArea, CardContent, 
-        CardMedia, Grid, SvgIcon, Typography } from '@mui/material'
+import { Box, CardActionArea, CardContent, 
+        CardMedia, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
 import GlassButton from '../../components/glass/GlassButton'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
@@ -16,23 +16,15 @@ const MatrixIcon = () => {
   )
 }
 
-const PlayIcon = () => {
-  return (
-    <SvgIcon>
-      <path fill='currentColor' d='M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z' />
-    </SvgIcon>
-  )
-}
-
 export const Plays = () => {
-  const key = useParams().key
-  const [plays, setPlays] = useState([]);
+  const id = useParams().id
+  const [plays, setPlays] = useState([])
   const history = useHistory()
   
   useEffect(() => {
     let shouldCancel = false
     const call = async () => {
-      const response = await axios.get('https://opensheet.elk.sh/' + key + '/Plays')
+      const response = await axios.get('https://opensheet.elk.sh/' + id + '/Plays')
       if (!shouldCancel && response.data && response.data.length > 0) {
         setPlays(
           response.data.map(row => ({
@@ -49,7 +41,6 @@ export const Plays = () => {
   }, [])
 
   const matrixClick = (playUri) => {
-    console.log(playUri)
     history.push('/tactics/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   } 
 
@@ -62,11 +53,12 @@ export const Plays = () => {
     <Box sx={{ flexGrow: 1, mt:37 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
-          <Grid item xs={2} md={3} key={index}>
+          <Grid item xs={3} md={4} key={index}>
             <GlassCard 
-              className={['card', 'charizard'].join(' ')}  
-              >
-              <CardActionArea>
+              className={['card', 'charizard'].join(' ')}>
+              <CardActionArea sx={{
+                  pointerEvents: 'auto'}}
+                  onClick={()=>gameClick(play.playUri)}>
                 <CardMedia
                   component='img'
                   image={play.coverArtUri}
@@ -82,23 +74,17 @@ export const Plays = () => {
                   </Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Box sx={{ 
-                  flexGrow: 1, ml: 1,
-                  pointerEvents: 'auto'
-                }}>
-                  <GlassButton color="primary" variant="outlined" onClick={()=>matrixClick(play.playUri)}  edge="start" >
-                    <MatrixIcon />
-                  </GlassButton>
-                </Box>
-                <Box sx={{ 
-                  mr: 1,
-                  pointerEvents: 'auto'}} >
-                  <GlassButton color="primary" variant="outlined" onClick={()=>gameClick(play.playUri)}>
-                    <PlayIcon />
-                  </GlassButton>
-                </Box>
-              </CardActions>
+              <IconButton 
+                color="primary"
+                sx={{ 
+                  position: 'absolute', 
+                  top: 0, 
+                  left: 0, 
+                  pointerEvents: 'auto' 
+                }}
+                onClick={()=>matrixClick(play.playUri)}>
+                <MatrixIcon />
+              </IconButton>
             </GlassCard>
           </Grid>
         ))}

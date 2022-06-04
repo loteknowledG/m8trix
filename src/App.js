@@ -6,7 +6,8 @@ import Game from './views/Game'
 import Plays from './views/Plays'
 import Matrix from './views/Matrix'
 import Tactics from './views/Tactics'
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import TopAppBar from './components/TopAppBar'
+import { HashRouter as Router, Route, Switch, useLocation } from "react-router-dom";
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
 import './css/scrollbar.css'
@@ -46,11 +47,14 @@ function App() {
               <Fluid />
             </Route>
             <Route path="/play">
+              
               <Play />
               <Fluid />
             </Route>
-            <Route path="/plays/:key">
+            <Route path="/plays/:id">
+              
               <Plays />
+              
               <Fluid />
             </Route>
             <Route path="/matrix/:id">
@@ -61,8 +65,12 @@ function App() {
               <Tactics />
               <Fluid />
             </Route>
-            <Route path="/">
+            <Route path="/:id">
               <Dashboard />
+              <Fluid />
+            </Route>
+            <Route path="*">
+              <TopAppBar />
               <Fluid />
             </Route>
           </Switch>
@@ -71,5 +79,7 @@ function App() {
     </RecoilRoot>
   );
 }
+
+
 
 export default App;
