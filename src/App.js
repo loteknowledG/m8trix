@@ -1,7 +1,6 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline'
 import Dashboard from './views/Dashboard'
-import Play from './views/Play'
 import Game from './views/Game'
 import Plays from './views/Plays'
 import Matrix from './views/Matrix'
@@ -44,11 +43,6 @@ function App() {
           <Switch>
             <Route path="/game/:id">
               <Game />
-              <Fluid />
-            </Route>
-            <Route path="/play">
-              
-              <Play />
               <Fluid />
             </Route>
             <Route path="/plays/:id">

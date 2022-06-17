@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import { Box, CardActionArea, CardMedia, Grid, IconButton, SvgIcon } from '@mui/material'
+import { Box, CardActionArea, CardMedia, Grid, IconButton, Skeleton, SvgIcon } from '@mui/material'
 import TopAppBar from '../../components/TopAppBar'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
@@ -50,7 +50,6 @@ export const Tactics = () => {
   const cardActionAreaClick = (image) => {
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
-
   return images ? <>
     <TopAppBar />
     <Box sx={{ flexGrow: 1 }}>
@@ -80,6 +79,6 @@ export const Tactics = () => {
       </Grid>
     </Box>
   </> : 
-  <></>
+  <Skeleton />
 }
 export default Tactics

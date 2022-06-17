@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TopAppBar from '../../components/TopAppBar'
 import axios from 'axios'
-import { Box, CardActionArea, CardContent, 
-        CardMedia, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
+import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
 import GlassButton from '../../components/glass/GlassButton'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
@@ -54,8 +53,7 @@ export const Plays = () => {
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
           <Grid item xs={3} md={4} key={index}>
-            <GlassCard 
-              className={['card', 'charizard'].join(' ')}>
+            <GlassCard className={['card', 'charizard'].join(' ')}>
               <CardActionArea sx={{
                   pointerEvents: 'auto'}}
                   onClick={()=>gameClick(play.playUri)}>

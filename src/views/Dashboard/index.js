@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TopAppBar from '../../components/TopAppBar'
 import { useHistory, useParams } from 'react-router-dom'
-import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
+import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, Skeleton, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../components/glass/GlassCard'
+import './pokemon.css'
 
 const MatrixIcon = () => {
   return (
@@ -14,7 +15,6 @@ const MatrixIcon = () => {
 }
 
 export default function Dashboard () {
-  console.log('horus')
   const { id } = useParams()
   const [plays, setPlays] = useState([])
   const history = useHistory()
@@ -57,18 +57,17 @@ export default function Dashboard () {
   const gameClick = (playUri) => {
     history.push('/game/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   }
-  return (
-    <div className="App" >
-      <TopAppBar /> 
-      <Box sx={{ flexGrow: 1, mt:37 }}>
+  return (<>
+    <TopAppBar /> 
+    <Box sx={{ flexGrow: 1, mt:37 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
-          <Grid item xs={3} md={4} key={index}>
-            <GlassCard 
-              className={['card', 'charizard'].join(' ')}>
+          play ? 
+          (<Grid item xs={3} md={4} key={index}>
+            <GlassCard className={['card', 'charizard'].join(' ')}>
               <CardActionArea sx={{
-                  pointerEvents: 'auto'}}
-                  onClick={()=>gameClick(play.playUri)}>
+                pointerEvents: 'auto'}}
+                onClick={()=>gameClick(play.playUri)}>
                 <CardMedia
                   component='img'
                   image={play.coverArtUri}
@@ -96,10 +95,10 @@ export default function Dashboard () {
                 <MatrixIcon />
               </IconButton>
             </GlassCard>
-          </Grid>
+          </Grid>) :
+          (<Skeleton variant="rectangular" />)
         ))}
       </Grid>
     </Box>
-    </div>
-  )
+  </>)
 }

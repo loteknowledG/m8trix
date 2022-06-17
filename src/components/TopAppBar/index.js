@@ -6,7 +6,6 @@ import GlassFab from '../glass/GlassFab'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
 import N00sphere from './AppName/N00sphere'
-import { useLocation } from "react-router-dom";
 
 
 const SettingsIcon = () => {

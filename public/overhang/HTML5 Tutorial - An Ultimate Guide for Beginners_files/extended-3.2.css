@@ -1,0 +1,17 @@
+.tip-box a{color:#439800}
+.tip-box{color:#2e5014;background:#d5efc2}
+.info-tab{width:40px;height:40px;display:inline-block;position:absolute;top:16px;left:0}
+.info-tab::before,.info-tab::after{display:inline-block;color:#fff;line-height:normal;font-family:"icomoon";position:absolute}
+.info-tab i::before,.info-tab i::after{content:"";display:inline-block;position:absolute;left:0;bottom:-15px;transform:rotateX(60deg)}
+.info-tab i::before{width:20px;height:20px;box-shadow:inset 12px 0 13px rgba(0,0,0,0.5)}
+.info-tab i::after{width:0;height:0;border:12px solid transparent;border-bottom-color:#fff;border-left-color:#fff;bottom:-18px}
+.tip-icon{background:#92CD59}
+.tip-icon::before{font-size:24px;content:"\e901";top:7px;left:9px}
+
+@media screen and (max-width: 992px) {
+  .tip-box{padding:15px 18px 2px}
+  .color-box strong{margin-left:33px}
+  .info-tab{width:30px;height:30px;top:15px;left:18px;background:none}
+  .info-tab i{display:none}
+  .tip-icon::before{top:3px;left:4px;color:#2e5014}
+}
