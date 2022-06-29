@@ -20,9 +20,9 @@ export const Game = () => {
     call()
     return () => (shouldCancel = true)
   }, [id])
-
+  
   return images ? 
-    <Moment images={images} id={id} /> :
+    <Moment images={images} id="cookie" /> :
     <Skeleton />
 }
 

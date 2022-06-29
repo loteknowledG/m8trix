@@ -1,0 +1,9 @@
+@keyframes GoUp {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    opacity: 0;
+  }
+}

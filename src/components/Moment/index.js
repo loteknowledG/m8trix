@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
-import { Card, CardActionArea, CardMedia, LinearProgress } from '@mui/material/'
-import { useResizeDetector } from 'react-resize-detector'
+import { LinearProgress } from '@mui/material/'
 import { motion } from 'framer-motion'
-import LinearBuffer from '../LinearBuffer'
-import { useRecoilState } from 'recoil'
+import Tilt from 'react-parallax-tilt'
+import Points from '../Points'
 
 export const Moment = ({images, id}) => {
   const [idx, setIdx] = useState(0)
   const [clickCount, setClickCount] = useState(0)
   const [progress, setProgress] = useState(0);
-  const { width, height, ref } = useResizeDetector()
-  return <div 
-    ref={ref}>
-    {`${width}x${height}x${idx}`}
+  return <Tilt 
+    scale={.88} 
+    style={{ 
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
+    }} 
+    transitionSpeed={2500}>   
     <motion.div 
       style={{
         width: '100%',
@@ -26,8 +29,7 @@ export const Moment = ({images, id}) => {
         pointerEvents: 'auto'
       }}
       whileTap={{ scale: 0.9 }}>
-      <Card>
-        <CardActionArea>
+      <Points>
         <img 
           style={{
             width: '100%',
@@ -51,11 +53,11 @@ export const Moment = ({images, id}) => {
           }} 
           src={ images.length > 0 ? images[idx] : '' } 
           alt={ idx } 
+          loading="lazy"
         />
-        </CardActionArea>
-      </Card>
+      </Points>
       <LinearProgress variant="determinate" value={progress} />
     </motion.div>
-  </div>
+  </Tilt>
 }
 export default Moment

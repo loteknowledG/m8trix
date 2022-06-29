@@ -5,6 +5,8 @@ import TopAppBar from '../../components/TopAppBar'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
 
+
+
 const CheckboxBlankCircleOutlineIcon = () => {
   return (
     <SvgIcon>
@@ -16,12 +18,14 @@ const CheckboxBlankCircleOutlineIcon = () => {
 const CheckboxMarkedCircle = () => {
   return (
     <SvgIcon>
-       <path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+      <path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
     </SvgIcon>
   )
 }
 
 export const Tactics = () => {
+  // const { items, infiniteRef } = useFakeData();
+
   const [images, setImages] = useState(null);
   const [selectedImages, setSelectedImages] = useState([])
   const history = useHistory()
@@ -50,19 +54,45 @@ export const Tactics = () => {
   const cardActionAreaClick = (image) => {
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
+
+  function delay(delayInms) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(2);
+      }, delayInms);
+    });
+  }
+
+  async function sample() {
+    await delay(7000)
+  }
+
   return images ? <>
     <TopAppBar />
     <Box sx={{ flexGrow: 1 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        { images.map((image) => (
+      { images.map((image, idx) => {
+          if (idx % 7 === 0) {
+            sample()
+          } else { return (
           <Grid item xs={3} md={4} key={image}>
             <GlassCard sx={{pointerEvents: 'auto' }}>
               <CardActionArea  sx={{ position: 'relative' }} onClick={() => cardActionAreaClick(image)}>
-                <CardMedia
-                  component='img'
-                  image={image}
-                  alt={image} >
-                </CardMedia>
+                <img 
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'contain',
+                    overflow: 'hidden',
+                    userSelect: 'none',
+                    'MozUserSelect': 'none',
+                    'WebkitUserSelect': 'none',
+                    'MsUserSelect': 'none'
+                  }} 
+                  src={image} 
+                  alt={image}
+                  loading="lazy"
+                />
               </CardActionArea>
               {selectedImages.includes(image) ? (
                 <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
@@ -75,7 +105,7 @@ export const Tactics = () => {
               )}
             </GlassCard>
           </Grid>
-        ))}
+      )}})}
       </Grid>
     </Box>
   </> : 

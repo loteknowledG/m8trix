@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, Skeleton, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../components/glass/GlassCard'
 import './pokemon.css'
+import Tilt from 'react-parallax-tilt'
 
 const MatrixIcon = () => {
   return (
@@ -59,42 +60,45 @@ export default function Dashboard () {
   }
   return (<>
     <TopAppBar /> 
-    <Box sx={{ flexGrow: 1, mt:37 }}>
+    <Box sx={{ flexGrow: 1, mt:37, ml: 7, mr: 7 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
         { plays.map((play, index) => (
           play ? 
-          (<Grid item xs={3} md={4} key={index}>
-            <GlassCard className={['card', 'charizard'].join(' ')}>
-              <CardActionArea sx={{
-                pointerEvents: 'auto'}}
-                onClick={()=>gameClick(play.playUri)}>
-                <CardMedia
-                  component='img'
-                  image={play.coverArtUri}
-                  alt={play.title}
-                  sx={{ loading: 'lazy'}} />
-                <CardContent>
-                  <Typography 
-                    className="font-effect-neon"
-                    gutterBottom 
-                    variant='h5' 
-                    component='div'>
-                    {play.title}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <IconButton 
-                color="primary"
-                sx={{ 
-                  position: 'absolute', 
-                  top: 0, 
-                  left: 0, 
-                  pointerEvents: 'auto' 
-                }}
-                onClick={()=>matrixClick(play.playUri)}>
-                <MatrixIcon />
-              </IconButton>
-            </GlassCard>
+          (<Grid item xs={3} md={4} key={index} >
+            <Tilt scale={1.137} transitionSpeed={2500}>
+              <GlassCard className={['card', 'charizard', 'tilt-scale'].join(' ')}>
+                <CardActionArea sx={{
+                  pointerEvents: 'auto'}}
+                  onClick={()=>gameClick(play.playUri)}>
+                  <CardMedia
+                    component='img'
+                    image={play.coverArtUri}
+                    key={play.coverArtUri}
+                    alt={play.title}
+                    sx={{ loading: 'lazy'}} />
+                  <CardContent>
+                    <Typography 
+                      className="font-effect-neon"
+                      gutterBottom 
+                      variant='h5' 
+                      component='div'>
+                      {play.title}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <IconButton 
+                  color="primary"
+                  sx={{ 
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    pointerEvents: 'auto' 
+                  }}
+                  onClick={()=>matrixClick(play.playUri)}>
+                  <MatrixIcon />
+                </IconButton>
+              </GlassCard>
+            </Tilt>
           </Grid>) :
           (<Skeleton variant="rectangular" />)
         ))}
