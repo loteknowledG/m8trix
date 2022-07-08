@@ -70,19 +70,19 @@ export default function Dashboard () {
     <TopAppBar /> 
     <Box sx={{ flexGrow: 1, mt:37, ml: 7, mr: 7 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        { plays.map((play, index) => (
+        { plays.map((play, idx) => (
           play ? 
-          (<Grid item xs={3} md={4} key={index} >
+          (<Grid item xs={3} md={4} key={idx} >
             <Tilt scale={1.137} transitionSpeed={2500}>
               <GlassCard className={['card', 'charizard', 'tilt-scale'].join(' ')}>
                 <CardActionArea sx={{
                   pointerEvents: 'auto'}}
                   onClick={()=>gameClick(play.playUri)}>
                   <ProgressiveImage
-                    delay={137}
+                    delay={idx * 137}
                     src={play.coverArtUri}
                     placeholder=""
-                    
+                    rootMargin="0% 0% 0%"
                   >
                     {(src, loading) => { 
                       return loading ? 
@@ -98,7 +98,7 @@ export default function Dashboard () {
                             'WebkitUserSelect': 'none',
                             'MsUserSelect': 'none'
                           }} 
-                          src={play.coverArtUri} 
+                          src={src} 
                           alt={play.title} 
                           loading="lazy" />}}
                   </ProgressiveImage>

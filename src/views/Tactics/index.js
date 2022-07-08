@@ -58,7 +58,10 @@ export const Tactics = () => {
   const dominantImageColor = '#86356B';
   const placeholder = (
     <div
-      style={{ backgroundColor: dominantImageColor, height: 300, width: 500 }}
+      style={{ backgroundColor: dominantImageColor, 
+               height: '100%', 
+               width: '100%',
+               opacity: 0.37 }}
     />
   );
 
@@ -66,16 +69,16 @@ export const Tactics = () => {
     <TopAppBar />
     <Box sx={{ flexGrow: 1 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-        { images.map((image) => (
-          <Grid item xs={3} md={4} key={image}>
+        { images.map((image, idx) => (
+          <Grid item xs={3} md={4} key={idx}>
             <Tilt scale={1.137} transitionSpeed={2500}>
               <GlassCard sx={{pointerEvents: 'auto' }}>
                 <CardActionArea  sx={{ position: 'relative' }} onClick={() => cardActionAreaClick(image)}>
                   <ProgressiveImage
-                    delay={137}
+                    delay={idx * 137}
                     src={image}
-                    placeholder=""
-                    
+                    placeholder="" 
+                    rootMargin="0% 0% 0%"
                   >
                     {(src, loading) => { 
                       return loading ? 
@@ -91,7 +94,7 @@ export const Tactics = () => {
                             'WebkitUserSelect': 'none',
                             'MsUserSelect': 'none'
                           }} 
-                          src={image} 
+                          src={src} 
                           alt="an alternative text" 
                           loading="lazy" />}}
                   </ProgressiveImage>
