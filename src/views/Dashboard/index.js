@@ -60,12 +60,17 @@ export default function Dashboard () {
   const gameClick = (playUri) => {
     history.push('/game/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   }
-  const dominantImageColor = '#86356B';
+
   const placeholder = (
     <div
-      style={{ backgroundColor: dominantImageColor, height: 300, width: 500 }}
+      style={{ 
+        backgroundColor: '#86356B', 
+        height: 337, 
+        width: 337 
+      }}
     />
-  );
+  )
+
   return plays ? <>
     <TopAppBar /> 
     <Box sx={{ flexGrow: 1, mt:37, ml: 7, mr: 7 }}>

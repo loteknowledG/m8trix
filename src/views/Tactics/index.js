@@ -55,15 +55,15 @@ export const Tactics = () => {
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
 
-  const dominantImageColor = '#86356B';
   const placeholder = (
     <div
-      style={{ backgroundColor: dominantImageColor, 
-               height: '100%', 
-               width: '100%',
-               opacity: 0.37 }}
+      style={{ 
+        backgroundColor: '#86356B', 
+        height: 337, 
+        width: 337
+      }}
     />
-  );
+  )
 
   return images ? <>
     <TopAppBar />
