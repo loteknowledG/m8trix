@@ -6,6 +6,8 @@ import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, Skeleton
 import GlassCard from '../../components/glass/GlassCard'
 import './pokemon.css'
 import Tilt from 'react-parallax-tilt'
+import ProgressiveImage from "react-progressive-graceful-image";
+
 
 const MatrixIcon = () => {
   return (
@@ -19,8 +21,8 @@ export default function Dashboard () {
   const { id } = useParams()
   const [plays, setPlays] = useState([])
   const history = useHistory()
+  // call Survey then call Site
   useEffect(() => {
-    
     let shouldCancel = false
     const callSurvey = async () => {
       if (id) {
@@ -58,7 +60,13 @@ export default function Dashboard () {
   const gameClick = (playUri) => {
     history.push('/game/' + playUri.substring(playUri.lastIndexOf('/') + 1))
   }
-  return (<>
+  const dominantImageColor = '#86356B';
+  const placeholder = (
+    <div
+      style={{ backgroundColor: dominantImageColor, height: 300, width: 500 }}
+    />
+  );
+  return plays ? <>
     <TopAppBar /> 
     <Box sx={{ flexGrow: 1, mt:37, ml: 7, mr: 7 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -70,12 +78,30 @@ export default function Dashboard () {
                 <CardActionArea sx={{
                   pointerEvents: 'auto'}}
                   onClick={()=>gameClick(play.playUri)}>
-                  <CardMedia
-                    component='img'
-                    image={play.coverArtUri}
-                    key={play.coverArtUri}
-                    alt={play.title}
-                    sx={{ loading: 'lazy'}} />
+                  <ProgressiveImage
+                    delay={137}
+                    src={play.coverArtUri}
+                    placeholder=""
+                    
+                  >
+                    {(src, loading) => { 
+                      return loading ? 
+                        placeholder : 
+                        <img 
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            overflow: 'hidden',
+                            userSelect: 'none',
+                            'MozUserSelect': 'none',
+                            'WebkitUserSelect': 'none',
+                            'MsUserSelect': 'none'
+                          }} 
+                          src={play.coverArtUri} 
+                          alt={play.title} 
+                          loading="lazy" />}}
+                  </ProgressiveImage>
                   <CardContent>
                     <Typography 
                       className="font-effect-neon"
@@ -104,5 +130,6 @@ export default function Dashboard () {
         ))}
       </Grid>
     </Box>
-  </>)
+  </> : 
+  <Skeleton />
 }

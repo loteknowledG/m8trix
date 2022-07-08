@@ -4,8 +4,8 @@ import { Box, CardActionArea, CardMedia, Grid, IconButton, Skeleton, SvgIcon } f
 import TopAppBar from '../../components/TopAppBar'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
-
-
+import Tilt from 'react-parallax-tilt'
+import ProgressiveImage from "react-progressive-graceful-image";
 
 const CheckboxBlankCircleOutlineIcon = () => {
   return (
@@ -41,7 +41,7 @@ export const Tactics = () => {
     }
     call()
     return () => (shouldCancel = true)
-  }, [])
+  }, [id])
 
   const selectedChanged = (image) => {
     if (!selectedImages.includes(image)) {
@@ -55,57 +55,60 @@ export const Tactics = () => {
     history.push('/matrix/' + image.substring(image.lastIndexOf('/') + 1))
   }
 
-  function delay(delayInms) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(2);
-      }, delayInms);
-    });
-  }
-
-  async function sample() {
-    await delay(7000)
-  }
+  const dominantImageColor = '#86356B';
+  const placeholder = (
+    <div
+      style={{ backgroundColor: dominantImageColor, height: 300, width: 500 }}
+    />
+  );
 
   return images ? <>
     <TopAppBar />
     <Box sx={{ flexGrow: 1 }}>
       <Grid container alignItems="center" justifyContent="center" spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-      { images.map((image, idx) => {
-          if (idx % 7 === 0) {
-            sample()
-          } else { return (
+        { images.map((image) => (
           <Grid item xs={3} md={4} key={image}>
-            <GlassCard sx={{pointerEvents: 'auto' }}>
-              <CardActionArea  sx={{ position: 'relative' }} onClick={() => cardActionAreaClick(image)}>
-                <img 
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'contain',
-                    overflow: 'hidden',
-                    userSelect: 'none',
-                    'MozUserSelect': 'none',
-                    'WebkitUserSelect': 'none',
-                    'MsUserSelect': 'none'
-                  }} 
-                  src={image} 
-                  alt={image}
-                  loading="lazy"
-                />
-              </CardActionArea>
-              {selectedImages.includes(image) ? (
-                <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
-                  <CheckboxMarkedCircle />
-                </IconButton>
-              ) : (
-                <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
-                  <CheckboxBlankCircleOutlineIcon />
-                </IconButton>
-              )}
-            </GlassCard>
+            <Tilt scale={1.137} transitionSpeed={2500}>
+              <GlassCard sx={{pointerEvents: 'auto' }}>
+                <CardActionArea  sx={{ position: 'relative' }} onClick={() => cardActionAreaClick(image)}>
+                  <ProgressiveImage
+                    delay={137}
+                    src={image}
+                    placeholder=""
+                    
+                  >
+                    {(src, loading) => { 
+                      return loading ? 
+                        placeholder : 
+                        <img 
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            overflow: 'hidden',
+                            userSelect: 'none',
+                            'MozUserSelect': 'none',
+                            'WebkitUserSelect': 'none',
+                            'MsUserSelect': 'none'
+                          }} 
+                          src={image} 
+                          alt="an alternative text" 
+                          loading="lazy" />}}
+                  </ProgressiveImage>
+                </CardActionArea>
+                {selectedImages.includes(image) ? (
+                  <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
+                    <CheckboxMarkedCircle />
+                  </IconButton>
+                ) : (
+                  <IconButton sx={{ position: 'absolute', top: 0, left: 0 }} onClick={()=> selectedChanged(image)}>
+                    <CheckboxBlankCircleOutlineIcon />
+                  </IconButton>
+                )}
+              </GlassCard>
+            </Tilt>
           </Grid>
-      )}})}
+        ))}
       </Grid>
     </Box>
   </> : 

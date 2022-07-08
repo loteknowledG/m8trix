@@ -37,7 +37,7 @@ export const Plays = () => {
     }
     call()
     return () => (shouldCancel = true)
-  }, [])
+  }, [id])
 
   const matrixClick = (playUri) => {
     history.push('/tactics/' + playUri.substring(playUri.lastIndexOf('/') + 1))
@@ -57,11 +57,21 @@ export const Plays = () => {
               <CardActionArea sx={{
                   pointerEvents: 'auto'}}
                   onClick={()=>gameClick(play.playUri)}>
-                <CardMedia
-                  component='img'
-                  image={play.coverArtUri}
-                  alt={play.title}
-                  sx={{ loading: 'lazy'}} />
+                 <img 
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'contain',
+                      overflow: 'hidden',
+                      userSelect: 'none',
+                      'MozUserSelect': 'none',
+                      'WebkitUserSelect': 'none',
+                      'MsUserSelect': 'none'
+                    }} 
+                    src={play.coverArtUri} 
+                    alt={play.title}
+                    loading="lazy"
+                  />
                 <CardContent>
                   <Typography 
                     className="font-effect-neon"
