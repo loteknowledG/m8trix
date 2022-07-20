@@ -31,8 +31,8 @@ export function addDataValues(response, spreadsheetData, columns) {
     valueInputOption: "USER_ENTERED"
   };
 
-  window.gapi.client.sheets.spreadsheets.values.batchUpdate({
-    spreadsheetId: spreadsheetId,
-    resource: body
-  }).then(() => addFormatting(spreadsheet));
+  // window.gapi.client.sheets.spreadsheets.values.batchUpdate({
+  //   spreadsheetId: spreadsheetId,
+  //   resource: body
+  // }).then(() => addFormatting(spreadsheet));
 }

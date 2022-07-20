@@ -32,6 +32,9 @@ export const Tactics = () => {
   const id = useParams().id
 
   useEffect(() => {
+    fetch('https://photos.app.goo.gl/ndpDnbTgAxfRhYKu8').then((response) => {
+      console.log(response.data)
+    })
     let shouldCancel = false
     const call = async () => {
       const response = await axios.get("https://translucent-ivy-elf.glitch.me/" + id)

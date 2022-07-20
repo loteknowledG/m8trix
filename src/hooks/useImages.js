@@ -4,7 +4,8 @@ import axios from "axios"
 export const useImages = () => {
   const [images, setImages] = useState([])
   const [loading, setLoading] = useState(false)
-  
+  const [items, setItems] = useState([])
+
   useEffect(() => {
     let shouldCancel = false
     const call = async () => {
@@ -16,5 +17,14 @@ export const useImages = () => {
     call()
     return () => (shouldCancel = true)
   }, [])
+
+  function onLoadMore() {
+    setLoading(true);
+
+    //setTimeout(() => {
+      setItems((list) => list.concat(fakeData));
+      setLoading(false);
+    //}, 1000);
+  }
 }
 export default useImages

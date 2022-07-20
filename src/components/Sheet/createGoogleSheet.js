@@ -1,0 +1,53 @@
+import { addDataValues } from './addDataValues'
+
+
+export function createGoogleSheet(data) {
+  var columns = [ "country", "cases", "todayCases", "deaths",   "todayDeaths",  "recovered", "todayRecovered",  "active", "critical",   "casesPerOneMillion",   "deathsPerOneMillion",  "tests",    "testsPerOneMillion",   "population", "activePerOneMillion", "recoveredPerOneMillion", "criticalPerOneMillion" ]
+
+  var request = {
+    properties: {
+      title: "WORLD COVID DATA" 
+    },
+    sheets: [
+      { //sheet1
+        properties: {
+          title: "Sheet1",
+          gridProperties: {
+            columnCount: columns.length, 
+            rowCount: data.length + 1, 
+            frozenRowCount: 1,
+            frozenColumnCount: 1,
+          },
+          tabColor: { 
+            red: 1.0,
+            green: 0.3,
+            blue: 0.4
+          },
+        },
+      },
+      { //sheet2
+        properties: {
+          title: "Sheet2",
+          gridProperties: {
+            columnCount: columns.length, 
+            rowCount: data.length + 1, 
+            frozenRowCount: 1,
+            frozenColumnCount: 1,
+          },
+          tabColor: { 
+            red: 0.0,
+            green: 0.0,
+            blue: 1.0
+          },
+        },
+      },            
+    ],
+  }
+
+  window.gapi.client.sheets.spreadsheets.create(request)
+    .then((response) => {
+      addDataValues(response, data, columns)
+      const url = response.result.spreadsheetUrl
+      window.open(url, "_blank")
+    });
+}

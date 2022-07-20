@@ -36,6 +36,7 @@ export function Matrix() {
       src={ 'https://lh3.googleusercontent.com/' + id } 
       alt={ 'https://lh3.googleusercontent.com/' + id } 
     />
+    
     <SpeedDial
       ariaLabel="Tagger">
       {actions.map((action) => (

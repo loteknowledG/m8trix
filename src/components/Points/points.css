@@ -1,8 +1,10 @@
 @keyframes GoUp {
   0% {
+    color:pink;
     opacity: 1;
   }
   100% {
+    color:magenta;
     top: 0px;
     opacity: 0;
   }

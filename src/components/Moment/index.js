@@ -6,7 +6,6 @@ import Points from '../Points'
 
 export const Moment = ({images, id}) => {
   const [idx, setIdx] = useState(0)
-  const [clickCount, setClickCount] = useState(0)
   const [progress, setProgress] = useState(0);
   return <Tilt 
     scale={.88} 

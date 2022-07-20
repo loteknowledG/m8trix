@@ -6,7 +6,7 @@ export const Points = ({
 }) => {
 
   var x = 0;
-$("#cookie").click(function(e) {
+$("#cookie").on('click', function(e) {
   x++;
   $("#cookie").append('<div id="x' + x + '" hidden>+1.0</div>');
   $("#x" + x).css("top", e.clientY);
@@ -14,7 +14,7 @@ $("#cookie").click(function(e) {
   $("#x" + x).css("position", "absolute");
   $("#x" + x).css("width", "25px");
   $("#x" + x).css("height", "25px");
-  $("#x" + x).css("color", "white");
+  $("#x" + x).css("color", "magenta");
   $("#x" + x).css("font-weight", "bold");
   $("#x" + x).css("animation", "GoUp 2s forwards linear");
   $("#x" + x).show();
