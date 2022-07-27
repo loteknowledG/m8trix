@@ -53,6 +53,7 @@ export const Moment = ({images, id}) => {
           src={ images.length > 0 ? images[idx] : '' } 
           alt={ idx } 
           loading="lazy"
+          referrerpolicy="no-referrer"
         />
       </Points>
       <LinearProgress variant="determinate" value={progress} />

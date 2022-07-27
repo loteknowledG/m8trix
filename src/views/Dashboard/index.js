@@ -105,7 +105,9 @@ export default function Dashboard () {
                           }} 
                           src={src} 
                           alt={play.title} 
-                          loading="lazy" />}}
+                          loading="lazy"
+                          referrerpolicy="no-referrer"
+                        />}}
                   </ProgressiveImage>
                   <CardContent>
                     <Typography 

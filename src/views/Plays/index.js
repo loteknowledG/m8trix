@@ -71,6 +71,7 @@ export const Plays = () => {
                     src={play.coverArtUri} 
                     alt={play.title}
                     loading="lazy"
+                    referrerpolicy="no-referrer"
                   />
                 <CardContent>
                   <Typography 
