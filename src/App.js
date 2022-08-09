@@ -58,13 +58,14 @@ function App() {
               <Tactics />
               <Fluid />
             </Route>
+            <Route path="/googlesheet">
+              <GoogleSheet/>
+            </Route>
             <Route path="/:id">
               <Dashboard />
               <Fluid />
             </Route>
-            <Route path="/googlesheet">
-              <GoogleSheet/>
-            </Route>
+            
             <Route path="*">
               <TopAppBar />
               <Fluid />

@@ -4,9 +4,10 @@ import { createGoogleSheet } from '../Sheet/createGoogleSheet'
 
 export function GoogleDownload(data, handleClientLoad) {
   useEffect(() => {
+    console.log('practice')
       handleClientLoad();
   }, []);
-
+  
 
     // On load, called to load the auth2 library and API client library.
 
