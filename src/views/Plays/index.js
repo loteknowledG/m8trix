@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TopAppBar from '../../components/TopAppBar'
 import axios from 'axios'
-import { Box, CardActionArea, CardContent, CardMedia, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
-import GlassButton from '../../components/glass/GlassButton'
+import { Box, CardActionArea, CardContent, Grid, IconButton, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
 import './pokemon.css';
@@ -71,7 +70,7 @@ export const Plays = () => {
                     src={play.coverArtUri} 
                     alt={play.title}
                     loading="lazy"
-                    referrerpolicy="no-referrer"
+                    referrerPolicy="no-referrer"
                   />
                 <CardContent>
                   <Typography 

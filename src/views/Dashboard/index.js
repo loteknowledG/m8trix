@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import TopAppBar from '../../components/TopAppBar'
 import { useHistory, useParams } from 'react-router-dom'
-import { Box, CardActionArea, CardContent, Grid, IconButton, Skeleton, SvgIcon, Typography } from '@mui/material'
+import { Box, CardActionArea, CardContent, Fab, Grid, IconButton, Skeleton, SvgIcon, Typography } from '@mui/material'
 import GlassCard from '../../components/glass/GlassCard'
+import AddPlay from '../../components/AddPlay'
 import './pokemon.css'
 import Tilt from 'react-parallax-tilt'
 import ProgressiveImage from "react-progressive-graceful-image";
@@ -17,10 +18,20 @@ const MatrixIcon = () => {
   )
 }
 
+const AddIcon = () => {
+  return (
+    <SvgIcon>
+      <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+    </SvgIcon>
+  )
+}
+
 export default function Dashboard () {
   const { id } = useParams()
   const [plays, setPlays] = useState([])
   const history = useHistory()
+  const [dialogOpen, setDialogOpen] = useState(false);
+  
   // call Survey then call Site
   useEffect(() => {
     let shouldCancel = false
@@ -29,7 +40,7 @@ export default function Dashboard () {
         const responseSurvey = await axios.get('https://opensheet.elk.sh/1urt4Nxrn22iGy7kNV4T_cgbu2hOOyCGiPU6HbbLLUoE/Survey')
         if (!shouldCancel && responseSurvey.data && responseSurvey.data.length > 0) {
           const callSite = async () => {
-            const responseSite = await axios.get('https://opensheet.elk.sh/' + handleUrlChange(responseSurvey.data.find(row => row['TITLE'].toLowerCase() == id.toLowerCase()).URL) + '/Plays')
+            const responseSite = await axios.get('https://opensheet.elk.sh/' + handleUrlChange(responseSurvey.data.find(row => row['TITLE'].toLowerCase() === id.toLowerCase()).URL) + '/Plays')
             if (!shouldCancel && responseSite.data && responseSite.data.length > 0) {
               setPlays(
                 responseSite.data.map(row => ({
@@ -59,6 +70,10 @@ export default function Dashboard () {
 
   const gameClick = (playUri) => {
     history.push('/game/' + playUri.substring(playUri.lastIndexOf('/') + 1))
+  }
+
+  const addClick = () => {
+
   }
 
   const placeholder = (
@@ -106,7 +121,7 @@ export default function Dashboard () {
                           src={src} 
                           alt={play.title} 
                           loading="lazy"
-                          referrerpolicy="no-referrer"
+                          referrerPolicy="no-referrer"
                         />}}
                   </ProgressiveImage>
                   <CardContent>
@@ -137,6 +152,19 @@ export default function Dashboard () {
         ))}
       </Grid>
     </Box>
+    <Fab 
+      color="primary" 
+      aria-label="add" sx={{
+        position: 'fixed',
+        pointerEvents: 'auto', 
+        bottom: 16,
+        right: 16,
+      }}
+      onClick={()=>{setDialogOpen(true)}}
+    >
+      <AddIcon />
+    </Fab>
+    <AddPlay open={dialogOpen} handleClose={() => {setDialogOpen(false); console.log('lonely') }} />
   </> : 
   <Skeleton />
 }

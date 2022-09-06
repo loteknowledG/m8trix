@@ -1,9 +1,6 @@
 import React from 'react'
-import TopAppBar from '../../components/TopAppBar'
 import { useParams } from 'react-router-dom'
-import { Box, SvgIcon, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material'
-import { css } from '@emotion/react'
-import styles from './grid.module.css';
+import { SvgIcon, SpeedDial, SpeedDialAction } from '@mui/material'
 
 const TagIcon = () => {
   return (
@@ -35,7 +32,7 @@ export function Matrix() {
       }} 
       src={ 'https://lh3.googleusercontent.com/' + id } 
       alt={ 'https://lh3.googleusercontent.com/' + id } 
-      referrerpolicy="no-referrer"
+      referrerPolicy="no-referrer"
     />
     
     <SpeedDial

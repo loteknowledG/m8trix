@@ -1,6 +1,4 @@
 export function addDataValues(response, spreadsheetData, columns) {
-  var spreadsheet = response.result
-  var spreadsheetId = response.result.spreadsheetId;
 
   var valuesSheet1 = [columns]
 

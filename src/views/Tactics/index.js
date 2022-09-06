@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-import { Box, CardActionArea, CardMedia, Grid, IconButton, Skeleton, SvgIcon } from '@mui/material'
+import { Box, CardActionArea, Grid, IconButton, Skeleton, SvgIcon } from '@mui/material'
 import TopAppBar from '../../components/TopAppBar'
 import GlassCard from '../../components/glass/GlassCard'
 import { useHistory, useParams } from 'react-router-dom'
@@ -24,8 +24,6 @@ const CheckboxMarkedCircle = () => {
 }
 
 export const Tactics = () => {
-  // const { items, infiniteRef } = useFakeData();
-
   const [images, setImages] = useState(null);
   const [selectedImages, setSelectedImages] = useState([])
   const history = useHistory()

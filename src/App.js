@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import Dashboard from './views/Dashboard'
 import Game from './views/Game'
@@ -7,7 +7,7 @@ import Matrix from './views/Matrix'
 import GoogleSheet from './views/GoogleSheet'
 import Tactics from './views/Tactics'
 import TopAppBar from './components/TopAppBar'
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom"
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
 import './css/scrollbar.css'

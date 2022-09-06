@@ -1,12 +1,11 @@
 import React from 'react'
-import { useRecoilState } from 'recoil'
-import { Box, SvgIcon, Toolbar } from '@mui/material'
+import {useSetRecoilState} from 'recoil';
+import {Box, SvgIcon, Toolbar} from '@mui/material'
 import GlassAppBar from '../glass/GlassAppBar'
 import GlassFab from '../glass/GlassFab'
 import Settings from './settings'
 import drawerOpenState from '../../atoms/drawerOpenState'
 import N00sphere from './AppName/N00sphere'
-
 
 const SettingsIcon = () => {
   return (
@@ -16,11 +15,8 @@ const SettingsIcon = () => {
   )
 }
 
-
-
 export default function TopAppBar() {
-  
-  const [drawerOpen, setDrawerOpen] = useRecoilState(drawerOpenState);
+  const setDrawerOpen = useSetRecoilState(drawerOpenState)
   return (
     <Box sx={{ flexGrow: 1 }}  >
       <GlassAppBar>
