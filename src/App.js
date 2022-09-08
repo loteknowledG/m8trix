@@ -7,6 +7,7 @@ import Matrix from './views/Matrix'
 import GoogleSheet from './views/GoogleSheet'
 import Tactics from './views/Tactics'
 import TopAppBar from './components/TopAppBar'
+import Creation from './components/Creation'
 import { HashRouter as Router, Route, Switch } from "react-router-dom"
 import { RecoilRoot } from 'recoil'
 import Fluid from './components/Fluid'
@@ -63,11 +64,13 @@ function App() {
             </Route>
             <Route path="/:id">
               <Dashboard />
+              <Creation />
               <Fluid />
             </Route>
             
             <Route path="*">
               <TopAppBar />
+              <Creation />
               <Fluid />
             </Route>
           </Switch>

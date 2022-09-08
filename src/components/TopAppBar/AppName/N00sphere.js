@@ -5,7 +5,8 @@ export function N00sphere() {
     <Typography sx={{
       m: 2,
       fontFamily: 'Hack, monospace',
-      fontSize: '1.337vw'
+      fontSize: '.77vw',
+      textAlign:"center"
     }} 
     className="font-effect-neon">                                                               <br/>
 ___________ooo_o_____ooo_o___________________oo______________________________<br/>

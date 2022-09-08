@@ -20,11 +20,10 @@ export default function TopAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}  >
       <GlassAppBar>
-        <Toolbar>
+        <Toolbar sx={{justifyContent: "space-between"}}>
+          <div></div>
           <N00sphere /> 
-          <GlassFab sx={{pointerEvents: 'auto' }} variant="outlined" color="primary" aria-label="settings" onClick={() => { setDrawerOpen('right') }}>
-            <SettingsIcon />
-          </GlassFab>
+          <div></div>
           <Settings/>
         </Toolbar>
       </GlassAppBar>
